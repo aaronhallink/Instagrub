@@ -11,6 +11,7 @@ function displayIngredient(){
 	if(name!=""){
 		ingredients.add(name);
 		output = "";
+		console.log(ingredients[0]);
 		for(i = 0; i<ingredients.length; i++){
 			output += (ingredients[i] + "<br>");
 		}
