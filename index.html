@@ -1,0 +1,35 @@
+<html>
+	<head>
+
+        <meta charset="utf-8">
+        <meta name="author" content="Joel Navarrete">
+        <meta name="description" content="Instagrub">
+
+        <title>Instagrub</title>
+
+ 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+ 		
+ 		<script type="text/javascript" src="js/scripts.js"></script>
+    </head>
+    <body bgcolor="ffb005">
+		<div id="wrap">
+			<div>
+				<img src="images/header.png" alt="instagrub header"/>
+			</div>
+			<div id="input">
+				<input type="text" name="ingredients" id="ingredients" style="background-color:#ffeabd" placeholder="Enter ingredient here" size="200" />
+				<img id="addImage" src="images/add_unpressed.png" onclick="displayIngredient()" onmousedown="changeImage()" onmouseup="revertImage()" height="35px" align="middle"/>
+
+			</div>
+			<div>
+				<textarea rows="30" cols="150" id="input_target" alignment="center" placeholder="This will display what has already been inputted above" style="background-color:#ffeabd">
+				</textarea>
+			</div>
+			<div>
+				<a href="results.html"">
+					<img src="images/search_unpressed.png" height="55px"/>
+				</a>
+			</div>
+		</div>
+    </body>
+</html> 
