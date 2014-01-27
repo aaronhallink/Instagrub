@@ -9,7 +9,7 @@ function displayIngredient(){
 	//for(i = 0; i<ingredients_list.length; i++){
 	//}
 	if(name!=""){
-		ingredients.add(name);
+		ingredients.push(name);
 		output = "";
 		console.log(ingredients[0]);
 		for(i = 0; i<ingredients.length; i++){
