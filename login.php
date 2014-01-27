@@ -9,16 +9,18 @@
 <body>
 <div id="wrap">
 		<div id="login">
-			<a href="login.php">Login</a> or <a href="register.php">Sign up</a>
+			<a href="register.php">Don't have an account? Sign up!</a>
 		</div>
+		<br/>
 	<div id="header">Instagrub</div>
 
-	<div id="search_box">
-		<form name="post_msg" action="get.php" method="post">
-			Search: <input type="text" name="query" maxlength="30" /><br />
-			<input type="submit" value="submit" />
-		</form>
-	</div>
+	<form name="register" action="auth_user.php" method="post">
+	    Email: <input type="text" name="email" maxlength="30" /><br />
+	    Password: <input type="password" name="pass1" /> <br />
+	    <input type="submit" value="register" id="register" />
+	</form>
+
+	<a href="index.php">Back home</a>
 </div>
 </body>
 </html>

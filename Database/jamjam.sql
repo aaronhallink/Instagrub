@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2014 at 07:07 PM
--- Server version: 5.5.17
--- PHP Version: 5.4.16
+-- Generation Time: Jan 27, 2014 at 10:10 PM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `jamjam`
 --
-CREATE DATABASE IF NOT EXISTS `jamjam` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `jamjam`;
 
 -- --------------------------------------------------------
 
@@ -64,7 +62,7 @@ INSERT INTO `ingredients` (`name`, `allergens`, `diets`) VALUES
 CREATE TABLE IF NOT EXISTS `recipes` (
   `recipe_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `directions` varchar(255) NOT NULL,
+  `directions` longtext NOT NULL,
   `preparation time` int(11) NOT NULL,
   PRIMARY KEY (`recipe_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -84,23 +82,22 @@ INSERT INTO `recipes` (`recipe_id`, `name`, `directions`, `preparation time`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `email_address` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `allergies` varchar(255) DEFAULT NULL,
   `diet` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `name`, `email_address`, `password`, `allergies`, `diet`) VALUES
-(1, 'Jim', '', '', 'nuts', 'gluten'),
-(2, 'alex', '', '', '', ''),
-(3, 'mil', '', '', NULL, NULL);
+(4, 'name', 'email@site.com', 'password12412', 'none', 'yes'),
+(5, 'TestUser1', 'test@test.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', NULL, NULL);
 
 --
 -- Constraints for dumped tables
