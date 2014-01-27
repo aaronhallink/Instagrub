@@ -11,7 +11,7 @@
 		<div id="login">
 			<a href="login.php">Login</a> or <a href="register.php">Sign up</a>
 		</div>
-	<div id="header">Instagrub</div>
+	<div id="header"></div>
 
 	<div id="search_box">
 		<form name="post_msg" action="get.php" method="post">

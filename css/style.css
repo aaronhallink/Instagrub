@@ -10,9 +10,13 @@ body {
 #header {
 	font-size: 24px;
 	font-weight: 800; 
+	background: url('../images/header.png');
 }
 
 #seach_box {
 	margin: auto;
-	background-color: #ffeabd;
+}
+
+#search_textbox {
+	background-color: #ffb005;
 }
