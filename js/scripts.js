@@ -1,7 +1,7 @@
 //var ingredients_list = newArray();
 var output="" ;
-
-
+var ingredients = new Array();
+var i;
 
 function displayIngredient(){
 /*if (e.keyCode == 13) {*/
@@ -9,7 +9,11 @@ function displayIngredient(){
 	//for(i = 0; i<ingredients_list.length; i++){
 	//}
 	if(name!=""){
-		output+= (name + "\n");
+		ingredients.add(name);
+		output = "";
+		for(i = 0; i<ingredients.length; i++){
+			output += (ingredients[i] + "<br>");
+		}
 		document.getElementById('input_target').innerHTML = output;
 		document.getElementByid('input_target').placeholder=null;
 	}
