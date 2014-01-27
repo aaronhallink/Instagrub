@@ -13,7 +13,10 @@ function displayIngredient(){
 		output = "";
 		console.log(ingredients[0]);
 		for(i = 0; i<ingredients.length; i++){
-			output += (ingredients[i] + "<br>");
+			if(i!=ingredients.length-1)
+				output += (ingredients[i] + ", ");
+			else
+				output += ingredients[i]
 		}
 		document.getElementById('input_target').innerHTML = output;
 		document.getElementByid('input_target').placeholder=null;
