@@ -8,11 +8,10 @@ body {
 	margin: auto;
 }
 #header {
-	font-size: 24px;
-	font-weight: 800; 
 	background-image: url('../images/header.png');
-	height:500;
-	width:200;
+	height:200px;
+	width:500px;
+	background-repeat: no-repeat;
 }
 
 #seach_box {
@@ -21,4 +20,24 @@ body {
 
 #search_textbox {
 	background-color: #ffb005;
+	margin: 0 auto;
 }
+
+
+input[type="text"]{
+	background-color: #ffeabd;
+}
+
+input[type="password"]{
+	background-color: #ffeabd;
+}
+
+input[type="submit"]{
+	background-image: url('../images/search_unpressed.png');
+}
+
+#searchImage {
+	background-color: transparent;
+	width: 300px;
+}
+
