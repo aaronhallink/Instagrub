@@ -23,14 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contains`
+-- Table structure for table `recipe_contains`
 --
 
-CREATE TABLE IF NOT EXISTS `contains` (
+CREATE TABLE IF NOT EXISTS `recipe_contains` (
   `recipe_id` int(11) NOT NULL DEFAULT '0',
   `ingredient_name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`recipe_id`,`ingredient_name`),
   KEY `ingredient_name` (`ingredient_name`)
+  CONSTRAINT `recipe_contains_c1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`),
+  CONSTRAINT `recipe_contains_c2` FOREIGN KEY (`ingredient_name`) REFERENCES `ingredients` (`name`);
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -91,6 +93,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
+------------------------------------------------------------
+
+--
+-- Table structure for table `user_owns
+--
+CREATE TABLE IF NOT EXISTS `user_owns` (
+  `user_id` int(11) NOT NULL,
+  `ingredient_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`, `ingredient_name`),
+  CONSTRAINT `user_owns_c1` FOREIGN KEY user_id REFERENCES `user` (`user_id`),
+  CONSTRAINT `user_owns_c2` FOREIGN KEY `ingredients` (`ingredient_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 --
 -- Dumping data for table `user`
 --
@@ -107,8 +123,7 @@ INSERT INTO `user` (`user_id`, `name`, `email_address`, `password`, `allergies`,
 -- Constraints for table `contains`
 --
 ALTER TABLE `contains`
-  ADD CONSTRAINT `contains_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`),
-  ADD CONSTRAINT `contains_ibfk_2` FOREIGN KEY (`ingredient_name`) REFERENCES `ingredients` (`name`);
+  ADD 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
