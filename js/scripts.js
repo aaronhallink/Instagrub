@@ -5,9 +5,7 @@ var ingredients = new Array();
 var i;
 
 function displayIngredient(){
-	console.log("TEST");
 	var name = document.getElementById('query').value;
-	console.log(name);
 	if(checkIngredient(name)==1){
 		alert("You already entered that!");
 		return;
@@ -15,14 +13,12 @@ function displayIngredient(){
 	if(name!=""){
 		ingredients.push(name);
 		output = "";
-		console.log(ingredients[0]);
 		for(i = 0; i<ingredients.length; i++){
 			/*if(i!=ingredients.length-1)
 				output += (amount[i] + " :" + ingredients[i] + "\n");
 			else
 				output += (amount[i] + " :" + ingredients[i] + "\n");*/
 			output += (ingredients[i] + "\n");
-			console.log(output);
 		}
 		document.getElementById('input_target').innerHTML = output;
 		document.getElementById('input_target').placeholder=null;
@@ -60,3 +56,17 @@ function revertImageSearch(){
 	var target = document.getElementById('searchImage');
 	target.src = "images/search_unpressed.png";
 }
+
+function recipeSearch(){
+	for(i=0;i<ingredients.length;i++){
+		if(i!=ingredients.length-1)
+			querySearch += ingredients[i] + "+";
+		else
+			querySearch += ingredients[i];
+	}
+	api();
+	api().SearchRecipe(querySearch, function(data){console.log(data)});
+
+}
+
+
