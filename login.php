@@ -14,7 +14,7 @@
 		<br/>
 	<div id="header">Instagrub</div>
 
-	<form name="register" action="authuser.php" method="post">
+	<form name="register" action="auth_user.php" method="post">
 	    Email: <input type="text" name="email" maxlength="30" /><br />
 	    Password: <input type="password" name="pass1" /> <br />
 	    <input type="submit" value="register" id="register" />
