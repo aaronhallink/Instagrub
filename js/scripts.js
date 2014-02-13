@@ -80,12 +80,13 @@ function recipeSearch(){
 
 				var List = document.createTextNode(ingredientsList);
 				document.getElementById('results_target').appendChild(recipeImg);
+				document.getElementById('results_target').appendChild(document.createElement('br'));
 				document.getElementById('results_target').appendChild(recipeName);
 				document.getElementById('results_target').appendChild(document.createElement('br'));
 				document.getElementById('results_target').appendChild(document.createTextNode('Ingredients:'));
 				document.getElementById('results_target').appendChild(document.createElement('br'));
 				for(var j=0; j<data.matches[i].ingredients.length; j++){
-					document.getElementById('results_target').appendChild(document.createTextNode(j+1 + ". " + data.matches[i].ingredients[j]));
+					document.getElementById('results_target').appendChild(document.createTextNode((j+1) + ". " + data.matches[i].ingredients[j]));
 					document.getElementById('results_target').appendChild(document.createElement('br'));
 				}
 			}

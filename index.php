@@ -10,10 +10,29 @@
 <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
+<?php 
+	session_start();
+	require('config.php');
+?>
 <div id="wrap">
-		<div id="login">
-			<a href="login.php">Login</a> or <a href="register.php">Sign up</a>
-		</div>
+<?php
+if (isset($_SESSION['valid_user']))
+{
+echo "Hello, ". $_SESSION['valid_user'];
+echo "<br/><a href='logout.php'>Log out</a>";
+
+}
+else
+{
+?>
+
+<div id="login">
+<a href="login.php">Login</a> or <a href="register.php">Sign up</a>
+</div>
+
+<?php
+}
+?>
 		<div id="header"></div>
 	<!--This is where the buttons and area where the ingredients are listed-->
 	<div id="search_box">
