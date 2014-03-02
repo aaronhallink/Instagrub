@@ -22,7 +22,6 @@
 				echo $email_from_db;
 				
 				//Check if the email is there
-				//Theres something wrong here....
 				if($email_from_db!=0)
 				{
 					return true;
