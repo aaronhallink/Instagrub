@@ -19,11 +19,11 @@ function displayIngredient(){
 			output += (ingredients[i] + "\n");
 		}
 		document.getElementById('input_target').innerHTML = output;
-		document.getElementById('input_target').placeholder=null;
+		// document.getElementById('input_target').placeholder=null;
 	}
 	else{
 		alert("Enter an ingredient!");
-		document.getElementById('input_target').innerHTML = null;
+		document.getElementById('input_target').innerHTML = output;
 	}
 }
 
@@ -57,6 +57,7 @@ function revertImageSearch(){
 	var target = document.getElementById('searchImage');
 	target.src = "images/search_unpressed.png";
 }
+
 // This function makes the query string, then calls the api object to make a api search
 // Then it gets the matches and displays them
 function recipeSearch(){
