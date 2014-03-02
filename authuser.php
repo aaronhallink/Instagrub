@@ -15,6 +15,12 @@
 			$result = mysql_query($query);
 			$realpass = mysql_fetch_array($result);
 
+			//Get Name
+			$query2 = "SELECT name FROM user WHERE email_address='$username';";
+			$result2 = mysql_query($query2);
+			$uname = mysql_fetch_array($result2);
+			
+			$name = $uname['name'];
 
 			if(sha1($password)!=$realpass['password'])
 			{
@@ -22,6 +28,7 @@
 			}
 			else
 			{
+				$_SESSION['uname'] = $name;
 				$_SESSION['valid_user'] = $username;
 				header('Location: index.php');
 			}
