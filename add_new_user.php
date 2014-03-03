@@ -7,6 +7,13 @@
 		/*Some error checking
 	
 		*/	
+			//check if email is already in the database
+			function doubleEmail($email)
+			{
+				$conn = mysql_connect('localhost:3306', 'root', '' );
+				mysql_select_db('jamjam', $conn);
+				
+			}
 			function checkEmail($email_f) 
 			{
 				//Query Database and check if the username is taken
