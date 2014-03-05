@@ -8,12 +8,17 @@
 	
 		*/	
 			//check if email is already in the database
-			function doubleEmail($email)
+			/*function doubleEmail($email)
 			{
 				$conn = mysql_connect('localhost:3306', 'root', '' );
 				mysql_select_db('jamjam', $conn);
-				
-			}
+
+				$query = "SELECT email_address FROM user WHERE email_address = '$email';";
+				$result = mysql_query($query);
+				$row = mysql_fetch_row($result);
+
+
+			}*/
 			function checkEmail($email_f) 
 			{
 				//Query Database and check if the username is taken
