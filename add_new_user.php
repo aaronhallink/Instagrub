@@ -55,5 +55,6 @@
 				header('Location: index.php');
 			}
 			else 
+				echo "email is already in the database";
 				header('Location: register.php');
 ?>
