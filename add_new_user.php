@@ -7,6 +7,18 @@
 		/*Some error checking
 	
 		*/	
+			//check if email is already in the database
+			/*function doubleEmail($email)
+			{
+				$conn = mysql_connect('localhost:3306', 'root', '' );
+				mysql_select_db('jamjam', $conn);
+
+				$query = "SELECT email_address FROM user WHERE email_address = '$email';";
+				$result = mysql_query($query);
+				$row = mysql_fetch_row($result);
+
+
+			}*/
 			function checkEmail($email_f) 
 			{
 				//Query Database and check if the username is taken
@@ -22,7 +34,6 @@
 				echo $email_from_db;
 				
 				//Check if the email is there
-				//Theres something wrong here....
 				if($email_from_db!=0)
 				{
 					return true;
@@ -44,5 +55,6 @@
 				header('Location: index.php');
 			}
 			else 
+				echo "email is already in the database";
 				header('Location: register.php');
 ?>

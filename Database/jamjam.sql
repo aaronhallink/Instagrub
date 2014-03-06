@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `allergies` varchar(255) DEFAULT NULL,
   `diet` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
+  UNIQUE KEY (`email_address`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
