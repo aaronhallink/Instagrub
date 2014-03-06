@@ -4,6 +4,7 @@ var querySearch="";
 var ingredients = new Array();
 var i;
 var recipes = new Array();
+var check = 0;
 
 // This will display the ingredients that the user added to the text area 
 function displayIngredient(){
@@ -19,7 +20,7 @@ function displayIngredient(){
 			output += (ingredients[i] + "\n");
 		}
 		document.getElementById('input_target').innerHTML = output;
-		// document.getElementById('input_target').placeholder=null;
+		document.getElementById('input_target').placeholder=null;
 	}
 	else{
 		alert("Enter an ingredient!");
@@ -57,7 +58,6 @@ function revertImageSearch(){
 	var target = document.getElementById('searchImage');
 	target.src = "images/search_unpressed.png";
 }
-
 // This function makes the query string, then calls the api object to make a api search
 // Then it gets the matches and displays them
 function recipeSearch(){
@@ -67,10 +67,19 @@ function recipeSearch(){
 		else
 			querySearch += ingredients[i];
 	}
+	if(querySearch==""){
+		alert("Please enter ingredients!");
+		return;
+	}
 	api();
 	api().SearchRecipe(querySearch, 
 		function(data){
 			console.log(data);
+			if(check == 1){
+				while(document.getElementById('results_target').hasChildNodes()){
+					document.getElementById('results_target').removeChild(document.getElementById('results_target').lastChild);
+				}
+			}
 			for(var i=0; i<data.matches.length; i++){
 				var recipeImg = new Image(100,100);
 				recipeImg.src = data.matches[i].smallImageUrls[0];
@@ -80,19 +89,28 @@ function recipeSearch(){
 				var ingredientsList = "Ingredients:\n";
 
 				var List = document.createTextNode(ingredientsList);
+
+
 				document.getElementById('results_target').appendChild(recipeImg);
-				document.getElementById('results_target').appendChild(document.createElement('br'));
 				document.getElementById('results_target').appendChild(recipeName);
 				document.getElementById('results_target').appendChild(document.createElement('br'));
 				document.getElementById('results_target').appendChild(document.createTextNode('Ingredients:'));
 				document.getElementById('results_target').appendChild(document.createElement('br'));
 				for(var j=0; j<data.matches[i].ingredients.length; j++){
-					document.getElementById('results_target').appendChild(document.createTextNode((j+1) + ". " + data.matches[i].ingredients[j]));
+					document.getElementById('results_target').appendChild(document.createTextNode(j + ". " + data.matches[i].ingredients[j]));
 					document.getElementById('results_target').appendChild(document.createElement('br'));
 				}
 			}
+			update();
+
 		});
 	querySearch = "";
+	if(document.getElementById('results_target').hasChildNodes()){
+	}
+}
+
+function update(){
+	check = 1;
 }
 // Old way of displaying
 /*function resultsCreate(){	
@@ -115,9 +133,6 @@ function recipeSearch(){
 			document.getElementById('results_target').appendChild(document.createElement('br'));
 		}
 	}
-
-
 }*/
-
 
 
