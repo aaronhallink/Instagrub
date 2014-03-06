@@ -8,6 +8,10 @@ describe("Scripts", function () {
 	var addImgSrc;
 	var searchImgSrc;
 	
+	it('should have no children', function() {
+		console.log(results.firstChild);
+	});
+	
 	beforeEach(function() {
 		addButton = document.getElementById('addImage');
 		query = document.getElementById('query');
@@ -18,12 +22,13 @@ describe("Scripts", function () {
 		searchImgSrc = searchButton.src;
 	});
 	
-	// describe("when the add button is clicked", function() {
-		// it("should change to a pressed button", function() {
-		// addButton.mousedown(addButton);
-			// expect(addImgSrc).toBe("images/add_pressed.png");
-		// });
-	// });
+	describe("when the add button is clicked", function() {
+	
+		it("should change to a pressed button", function() {
+			addButton.click()
+			expect(addImgSrc).toBe("images/add_pressed.png");
+		});
+	});
 	
 	describe("when a new ingredient is submitted", function() {
 		it("should update the text area", function() {
@@ -40,11 +45,9 @@ describe("Scripts", function () {
 	});
 	
 	describe("when an ingredient is already added", function () {	
-	
 		it("should return 1", function () {
 			expect(checkIngredient('corn')).toBe(1);
 		});
-
 	});
 	
 	describe("when an ingredient isn't added", function() {
@@ -54,6 +57,7 @@ describe("Scripts", function () {
 	});
 	
 	describe("when search button is clicked", function() {
+		
 		it("should post results", function() {
 			expect(results.hasChildNodes()).toBe(true);
 		});

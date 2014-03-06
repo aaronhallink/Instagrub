@@ -1,14 +1,22 @@
-//var ingredients_list = newArray();
+/**
+A collection of general functions used in the Intsagrub application
+@module scripts
+@class scripts
+
+**/
 var output="";
 var querySearch="";
 var ingredients = new Array();
 var i;
 var recipes = new Array();
 
-// This will display the ingredients that the user added to the text area 
+/**
+Displays the ingredients that the user added to the text area. 
+@method displayIngredients
+**/
 function displayIngredient(){
 	var name = document.getElementById('query').value;
-	if(checkIngredient(name)==1){
+	if(checkIngredient(name)){
 		alert("You already entered that!");
 		return;
 	}
@@ -27,14 +35,20 @@ function displayIngredient(){
 	}
 }
 
-// Checks whether or not the ingredient was already inputted or not
+/**
+Checks whether or not the given ingredient was already inputted.
+
+@method checkIngredient
+@param {String} name The name of the ingredient to check.
+@return {boolean} `true` if the ingredient **`name`** has been inputted by the user. Returns `false` otherwise.
+**/
 function checkIngredient(name){
 	for(i=0; i<ingredients.length; i++){
 		if(ingredients[i]==name){
-			return 1;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 // these functions change the image of the buttons based on the press
@@ -58,8 +72,12 @@ function revertImageSearch(){
 	target.src = "images/search_unpressed.png";
 }
 
-// This function makes the query string, then calls the api object to make a api search
-// Then it gets the matches and displays them
+/**
+This function makes the query string, then calls the api object to make a api search
+Then it gets the matches and displays them.
+
+@method recipeSearch
+**/
 function recipeSearch(){
 	for(i=0;i<ingredients.length;i++){
 		if(i!=ingredients.length-1)
@@ -115,8 +133,6 @@ function recipeSearch(){
 			document.getElementById('results_target').appendChild(document.createElement('br'));
 		}
 	}
-
-
 }*/
 
 
