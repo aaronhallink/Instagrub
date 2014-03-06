@@ -21,6 +21,7 @@ function validateForm()
 	var email = document.forms["reg_form"]["email"].value;
 	var pass1 = document.forms["reg_form"]["pass1"].value;
 	var pass2 = document.forms["reg_form"]["pass2"].value;
+	var php_email = "<?php echo $_GET['dup']; ?>";
 	//Check if they're all valid
 	if (email==null || email=="" || uname==null || uname=="" || pass1==null || pass1=="" || pass2==null || pass2=="" || pass1!=pass2)
 	{
@@ -44,6 +45,10 @@ function validateForm()
 		if (pass1!=pass2)
 		{
 			error_msg += '<p>Your passwords did not match.</p>';
+		}
+		if (php_email==1)
+		{
+			error_msg += '<p>Your is already in use.</p>';
 		}
 		showError();
 		document.getElementById('form_error_msg').innerHTML = error_msg;
