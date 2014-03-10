@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>scripts.js</title>
+    <title>js\scripts.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -86,7 +86,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: scripts.js</h1>
+                        <h1 class="file-heading">File: js\scripts.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -101,6 +101,7 @@ var querySearch=&quot;&quot;;
 var ingredients = new Array();
 var i;
 var recipes = new Array();
+var check = 0;
 
 /**
 Displays the ingredients that the user added to the text area. 
@@ -119,7 +120,7 @@ function displayIngredient(){
 			output += (ingredients[i] + &quot;\n&quot;);
 		}
 		document.getElementById(&#x27;input_target&#x27;).innerHTML = output;
-		// document.getElementById(&#x27;input_target&#x27;).placeholder=null;
+		document.getElementById(&#x27;input_target&#x27;).placeholder=null;
 	}
 	else{
 		alert(&quot;Enter an ingredient!&quot;);
@@ -170,6 +171,8 @@ Then it gets the matches and displays them.
 
 @method recipeSearch
 **/
+// This function makes the query string, then calls the api object to make a api search
+// Then it gets the matches and displays them
 function recipeSearch(){
 	for(i=0;i&lt;ingredients.length;i++){
 		if(i!=ingredients.length-1)
@@ -177,10 +180,19 @@ function recipeSearch(){
 		else
 			querySearch += ingredients[i];
 	}
+	if(querySearch==&quot;&quot;){
+		alert(&quot;Please enter ingredients!&quot;);
+		return;
+	}
 	api();
 	api().SearchRecipe(querySearch, 
 		function(data){
 			console.log(data);
+			if(check == 1){
+				while(document.getElementById(&#x27;results_target&#x27;).hasChildNodes()){
+					document.getElementById(&#x27;results_target&#x27;).removeChild(document.getElementById(&#x27;results_target&#x27;).lastChild);
+				}
+			}
 			for(var i=0; i&lt;data.matches.length; i++){
 				var recipeImg = new Image(100,100);
 				recipeImg.src = data.matches[i].smallImageUrls[0];
@@ -190,46 +202,29 @@ function recipeSearch(){
 				var ingredientsList = &quot;Ingredients:\n&quot;;
 
 				var List = document.createTextNode(ingredientsList);
+
+
 				document.getElementById(&#x27;results_target&#x27;).appendChild(recipeImg);
-				document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
 				document.getElementById(&#x27;results_target&#x27;).appendChild(recipeName);
 				document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
 				document.getElementById(&#x27;results_target&#x27;).appendChild(document.createTextNode(&#x27;Ingredients:&#x27;));
 				document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
 				for(var j=0; j&lt;data.matches[i].ingredients.length; j++){
-					document.getElementById(&#x27;results_target&#x27;).appendChild(document.createTextNode((j+1) + &quot;. &quot; + data.matches[i].ingredients[j]));
+					document.getElementById(&#x27;results_target&#x27;).appendChild(document.createTextNode(j + &quot;. &quot; + data.matches[i].ingredients[j]));
 					document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
 				}
 			}
+			update();
+
 		});
 	querySearch = &quot;&quot;;
-}
-// Old way of displaying
-/*function resultsCreate(){	
-	for(var i = 0; i&lt;recipes.length; i++){
-		var recipeImg = new Image(100,100);
-		recipeImg.src = recipes[i].smallImageUrls[0];
-		recipeImg.border = 1;
-		var recipeName=document.createTextNode(recipes[i].recipeName);
-
-		var ingredientsList = &quot;Ingredients:\n&quot;;
-
-		var List = document.createTextNode(ingredientsList);
-		document.getElementById(&#x27;results_target&#x27;).appendChild(recipeImg);
-		document.getElementById(&#x27;results_target&#x27;).appendChild(recipeName);
-		document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
-		document.getElementById(&#x27;results_target&#x27;).appendChild(document.createTextNode(&#x27;Ingredients:&#x27;));
-		document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
-		for(var j=0; j&lt;recipes[i].ingredients.length; j++){
-			document.getElementById(&#x27;results_target&#x27;).appendChild(document.createTextNode(j + &quot;. &quot; + recipes[i].ingredients[j]));
-			document.getElementById(&#x27;results_target&#x27;).appendChild(document.createElement(&#x27;br&#x27;));
-		}
+	if(document.getElementById(&#x27;results_target&#x27;).hasChildNodes()){
 	}
-}*/
+}
 
-
-
-
+function update(){
+	check = 1;
+}
     </pre>
 </div>
 

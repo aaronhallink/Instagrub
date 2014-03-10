@@ -1,8 +1,8 @@
 {
     "project": {},
     "files": {
-        "api.js": {
-            "name": "api.js",
+        "js\\api.js": {
+            "name": "js\\api.js",
             "modules": {},
             "classes": {
                 "api": 1
@@ -10,8 +10,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "scripts.js": {
-            "name": "scripts.js",
+        "js\\scripts.js": {
+            "name": "js\\scripts.js",
             "modules": {
                 "scripts": 1
             },
@@ -33,7 +33,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "scripts.js",
+            "file": "js\\scripts.js",
             "line": 1,
             "description": "A collection of general functions used in the Intsagrub application"
         }
@@ -48,7 +48,7 @@
             "plugin_for": [],
             "extension_for": [],
             "module": "scripts",
-            "file": "api.js",
+            "file": "js\\api.js",
             "line": 2,
             "description": "This class defines an object used to interact with the Yummly API",
             "static": 1,
@@ -64,21 +64,21 @@
             "extension_for": [],
             "module": "scripts",
             "namespace": "",
-            "file": "scripts.js",
+            "file": "js\\scripts.js",
             "line": 1,
             "description": "A collection of general functions used in the Intsagrub application"
         }
     },
     "classitems": [
         {
-            "file": "api.js",
+            "file": "js\\api.js",
             "line": 10,
             "description": "Keeps the api prototype static, we only need one copy.",
             "is_constructor": 1,
             "class": "api"
         },
         {
-            "file": "api.js",
+            "file": "js\\api.js",
             "line": 21,
             "description": "Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.",
             "itemtype": "method",
@@ -98,7 +98,7 @@
             "class": "api"
         },
         {
-            "file": "api.js",
+            "file": "js\\api.js",
             "line": 31,
             "description": "Use the PHP backend to search for a specific recipe must use the recipe's unique ID.",
             "itemtype": "method",
@@ -118,8 +118,8 @@
             "class": "api"
         },
         {
-            "file": "scripts.js",
-            "line": 13,
+            "file": "js\\scripts.js",
+            "line": 14,
             "description": "Displays the ingredients that the user added to the text area.",
             "itemtype": "method",
             "name": "displayIngredients",
@@ -127,8 +127,8 @@
             "module": "scripts"
         },
         {
-            "file": "scripts.js",
-            "line": 38,
+            "file": "js\\scripts.js",
+            "line": 39,
             "description": "Checks whether or not the given ingredient was already inputted.",
             "itemtype": "method",
             "name": "checkIngredient",
@@ -147,8 +147,8 @@
             "module": "scripts"
         },
         {
-            "file": "scripts.js",
-            "line": 75,
+            "file": "js\\scripts.js",
+            "line": 76,
             "description": "This function makes the query string, then calls the api object to make a api search\nThen it gets the matches and displays them.",
             "itemtype": "method",
             "name": "recipeSearch",
@@ -159,7 +159,7 @@
     "warnings": [
         {
             "message": "Missing item type\nKeeps the api prototype static, we only need one copy.",
-            "line": " api.js:10"
+            "line": " js\\api.js:10"
         }
     ]
 }

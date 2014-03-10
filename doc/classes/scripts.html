@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>api</title>
+    <title>scripts</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -86,7 +86,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>api Class</h1>
+                        <h1>scripts Class</h1>
 <div class="box meta">
     
 
@@ -94,7 +94,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/api.js.html#l2"><code>api.js:2</code></a>
+            Defined in: <a href="../files/js_scripts.js.html#l1"><code>js\scripts.js:1</code></a>
         </div>
     
 
@@ -110,69 +110,10 @@
 
 
 <div class="box intro">
-    <p>This class defines an object used to interact with the Yummly API</p>
+    <p>A collection of general functions used in the Intsagrub application</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_api" class="method item">
-    <h3 class="name"><code>api</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/api.js.html#l2"><code>api.js:2</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -198,14 +139,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getRecipe">getRecipe</a>
+                                <a href="#method_checkIngredient">checkIngredient</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_SearchRecipe">SearchRecipe</a>
+                                <a href="#method_displayIngredients">displayIngredients</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_recipeSearch">recipeSearch</a>
 
                                 
                                 
@@ -227,8 +175,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_getRecipe" class="method item">
-    <h3 class="name"><code>getRecipe</code></h3>
+                    <div id="method_checkIngredient" class="method item">
+    <h3 class="name"><code>checkIngredient</code></h3>
 
     
         <div class="args">
@@ -236,18 +184,109 @@
             
                 <li class="arg">
                     
-                        <code>args</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>callback</code>
+                        <code>name</code>
                     
                 </li>
             
             </ul><span class="paren">)</span>
         </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_scripts.js.html#l39"><code>js\scripts.js:39</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks whether or not the given ingredient was already inputted.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the ingredient to check.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p><code>true</code> if the ingredient <strong><code>name</code></strong> has been inputted by the user. Returns <code>false</code> otherwise.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_displayIngredients" class="method item">
+    <h3 class="name"><code>displayIngredients</code></h3>
+
+    
+        <span class="paren">()</span>
     
 
     
@@ -275,7 +314,7 @@
             
         
         
-        <a href="../files/api.js.html#l31"><code>api.js:31</code></a>
+        <a href="../files/js_scripts.js.html#l14"><code>js\scripts.js:14</code></a>
         
         </p>
 
@@ -286,50 +325,10 @@
     </div>
 
     <div class="description">
-        <p>Use the PHP backend to search for a specific recipe must use the recipe&#39;s unique ID.</p>
+        <p>Displays the ingredients that the user added to the text area.</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">args</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The parameters for the getRecipe Yummly API call.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">callback</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The function executed with the returned JSON.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -338,27 +337,11 @@
 </div>
 
                 
-                    <div id="method_SearchRecipe" class="method item">
-    <h3 class="name"><code>SearchRecipe</code></h3>
+                    <div id="method_recipeSearch" class="method item">
+    <h3 class="name"><code>recipeSearch</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>args</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>callback</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -386,7 +369,7 @@
             
         
         
-        <a href="../files/api.js.html#l21"><code>api.js:21</code></a>
+        <a href="../files/js_scripts.js.html#l76"><code>js\scripts.js:76</code></a>
         
         </p>
 
@@ -397,50 +380,11 @@
     </div>
 
     <div class="description">
-        <p>Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.</p>
+        <p>This function makes the query string, then calls the api object to make a api search
+Then it gets the matches and displays them.</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">args</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The parameters for the searchRecipe Yummly API call.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">callback</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The function excuted with the returned JSON.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
