@@ -44,11 +44,11 @@ function validateForm()
 		}
 		if (pass1!=pass2)
 		{
-			error_msg += '<p>You\'re passwords did not match.</p>';
+			error_msg += '<p>Your passwords did not match.</p>';
 		}
 		if (php_email==1)
 		{
-			error_msg += '<p>You\'re email is already in use.</p>';
+			error_msg += '<p>Your is already in use.</p>';
 		}
 		showError();
 		document.getElementById('form_error_msg').innerHTML = error_msg;
