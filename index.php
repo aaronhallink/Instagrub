@@ -6,8 +6,15 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="build/Instagrub.min.js"></script>
+
+<!--
 <script type="text/javascript" src="js/api.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
+-->
+
 </head>
 <body>
 <?php 
