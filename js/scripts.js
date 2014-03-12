@@ -52,22 +52,42 @@ function checkIngredient(name){
 	return false;
 }
 
+/**
+Changes the Add button image to a pressed button when clicked.
+
+@event changeImageAdd
+**/
 // these functions change the image of the buttons based on the press
 function changeImageAdd(){
 	var target = document.getElementById('addImage');
 	target.src = "images/add_pressed.png";
 }
 
+/**
+Reverts the pressed Add button image to an unpressed button when done clicking.
+
+@event revertImageAdd
+**/
 function revertImageAdd(){
 	var target = document.getElementById('addImage');
 	target.src = "images/add_unpressed.png";
 }
 
+/**
+Changes the Search button image to a pressed button when clicked.
+
+@event changeImageSearch
+**/
 function changeImageSearch(){
 	var target = document.getElementById('searchImage');
 	target.src = "images/search_pressed.png";
 }
 
+/**
+Reverts the pressed Search button image to an unpressed button when done clicking.
+
+@event revertImageSearch
+**/
 function revertImageSearch(){
 	var target = document.getElementById('searchImage');
 	target.src = "images/search_unpressed.png";
