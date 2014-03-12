@@ -23,7 +23,7 @@ module.exports = function(grunt) {
                 }
             }
        },
-        jasmine: {
+    jasmine: {
             compile: {
                 src: 'js/*.js',
                 options: {
@@ -33,11 +33,11 @@ module.exports = function(grunt) {
                     keepRunner: true
                 }
             }
-        },
-		clean:
-            ['docs', 'js']
+    },
+	clean: {
+            src: ['docs', 'build']
 	
-	
+	}
   });
 
   // Load the plugin that provides the "uglify" task.
@@ -48,5 +48,8 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['yuidoc', 'jasmine', 'uglify']);
+  grunt.registerTask('test', ['jasmine']);
+  grunt.registerTask('docs', ['clean', 'yuidoc']);
+  grunt.registerTask('build', ['clean', 'uglify']);
 
 };
