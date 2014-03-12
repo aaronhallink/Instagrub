@@ -1,9 +1,18 @@
 describe('API', function() {
 	
-	var API;
+	var a;
+	var spy;
+	var data = null;
 	
 	beforeEach( function() {
 		API = new api();
+		console.log(API);
+		spy = {
+			'f' : function(data) {
+				return 0;
+			}
+		};
+		spyOn(spy, 'f');
 	});
 	
 	it('should not be null', function() {
@@ -12,6 +21,11 @@ describe('API', function() {
 	
 	it('should be static', function() {
 		expect(new api()).toEqual(API);
+	});
+	
+	it('should call the callback function', function() {
+		API.SearchRecipe("corn", spy.f(data));
+		expect(spy.f).toHaveBeenCalled();
 	});
 	
 	

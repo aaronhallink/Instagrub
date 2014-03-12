@@ -79,7 +79,7 @@
         },
         {
             "file": "js\\api.js",
-            "line": 21,
+            "line": 22,
             "description": "Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.",
             "itemtype": "method",
             "name": "SearchRecipe",
@@ -99,7 +99,7 @@
         },
         {
             "file": "js\\api.js",
-            "line": 31,
+            "line": 33,
             "description": "Use the PHP backend to search for a specific recipe must use the recipe's unique ID.",
             "itemtype": "method",
             "name": "getRecipe",
@@ -148,7 +148,43 @@
         },
         {
             "file": "js\\scripts.js",
+            "line": 55,
+            "description": "Changes the Add button image to a pressed button when clicked.",
+            "itemtype": "event",
+            "name": "changeImageAdd",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "js\\scripts.js",
+            "line": 66,
+            "description": "Reverts the pressed Add button image to an unpressed button when done clicking.",
+            "itemtype": "event",
+            "name": "revertImageAdd",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "js\\scripts.js",
             "line": 76,
+            "description": "Changes the Search button image to a pressed button when clicked.",
+            "itemtype": "event",
+            "name": "changeImageSearch",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "js\\scripts.js",
+            "line": 86,
+            "description": "Reverts the pressed Search button image to an unpressed button when done clicking.",
+            "itemtype": "event",
+            "name": "revertImageSearch",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "js\\scripts.js",
+            "line": 96,
             "description": "This function makes the query string, then calls the api object to make a api search\nThen it gets the matches and displays them.",
             "itemtype": "method",
             "name": "recipeSearch",
