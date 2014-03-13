@@ -5,6 +5,14 @@
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+	<script type="text/javascript" src="js/api.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+
+
 </head>
 <body>
 <?php
@@ -18,7 +26,6 @@
 		{
 			echo "Hello, ".$_SESSION['uname'];
 			echo "<br/><a href='logout.php'>Log out</a>  - <a href='ingredients.php'>Ingredients</a>";
-			echo "<br/>ur userid is".$_SESSION['user_id'];
 
 		}
 		else
