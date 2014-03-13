@@ -22,6 +22,7 @@
 				echo $email_from_db;
 				
 				//Check if the email is there
+				//Theres something wrong here....
 				if($email_from_db!=0)
 				{
 					return true;
@@ -43,5 +44,5 @@
 				header('Location: index.php');
 			}
 			else 
-				header('Location: register.php?dup=1');
+				header('Location: register.php');
 ?>

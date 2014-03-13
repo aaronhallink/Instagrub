@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 13, 2014 at 08:24 PM
+-- Generation Time: Mar 13, 2014 at 02:17 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -23,57 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contains`
---
-
-CREATE TABLE IF NOT EXISTS `contains` (
-  `recipe_id` int(11) NOT NULL DEFAULT '0',
-  `ingredient_name` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`recipe_id`,`ingredient_name`),
-  KEY `ingredient_name` (`ingredient_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ingredients`
 --
 
 CREATE TABLE IF NOT EXISTS `ingredients` (
-  `name` varchar(255) NOT NULL,
-  `allergens` varchar(255) DEFAULT NULL,
-  `diets` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ingredients`
---
-
-INSERT INTO `ingredients` (`name`, `allergens`, `diets`) VALUES
-('cake mix', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `recipes`
---
-
-CREATE TABLE IF NOT EXISTS `recipes` (
-  `recipe_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `directions` longtext NOT NULL,
-  `preparation time` int(11) NOT NULL,
-  PRIMARY KEY (`recipe_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `recipes`
---
-
-INSERT INTO `recipes` (`recipe_id`, `name`, `directions`, `preparation time`) VALUES
-(1, 'cookies', 'make cookies', 60),
-(2, 'cake', 'make stuff', 9000);
+  `ingredient_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ingredient_name` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`ingredient_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -89,19 +48,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `allergies` varchar(255) DEFAULT NULL,
   `diet` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-  UNIQUE KEY (`email_address`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `contains`
+-- Constraints for table `ingredients`
 --
-ALTER TABLE `contains`
-  ADD CONSTRAINT `contains_ibfk_1` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`),
-  ADD CONSTRAINT `contains_ibfk_2` FOREIGN KEY (`ingredient_name`) REFERENCES `ingredients` (`name`);
+ALTER TABLE `ingredients`
+  ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
