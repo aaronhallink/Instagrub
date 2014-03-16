@@ -12,12 +12,12 @@
 			<a href="register.php">Don't have an account? Sign up!</a>
 		</div>
 		<br/>
-	<div id="header">Instagrub</div>
+	<div id="header"></div>
 
-	<form name="register" action="authuser.php" method="post">
+	<form name="register" action="auth_user.php" method="post">
 	    Email: <input type="text" name="email" maxlength="30" /><br />
 	    Password: <input type="password" name="pass1" /> <br />
-	    <input type="submit" value="register" id="register" />
+	    <input type="submit" value="Login" id="register" />
 	</form>
 
 	<a href="index.php">Back home</a>

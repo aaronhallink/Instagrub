@@ -45,14 +45,14 @@ describe("Scripts", function () {
 	});
 	
 	describe("when an ingredient is already added", function () {	
-		it("should return true", function () {
-			expect(checkIngredient('corn')).toBe(true);
+		it("should return 0", function () {
+			expect(checkIngredient('corn')).toBe(1);
 		});
 	});
 	
-	describe("when an ingredient isn't added", function() {
-		it("should return false", function() {
-			expect(checkIngredient('ham')).toBe(false);
+	describe("when an ingredient isn't already added", function() {
+		it("should return 0", function() {
+			expect(checkIngredient('ham')).toBe(0);
 		});
 	});
 	

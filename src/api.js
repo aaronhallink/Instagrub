@@ -21,11 +21,11 @@ function api() {
 
 /**
 Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.
-@method SearchRecipe
+@method searchRecipe
 @param args {String} The parameters for the searchRecipe Yummly API call.
 @param callback {function} The function excuted with the returned JSON.
 **/
-api.prototype.SearchRecipe = function(args, callback){
+api.prototype.searchRecipe = function(args, callback){
 	var backend = "../backend.php?q=search&p=";
 	var apiJson= $.getJSON(backend, {p : args }, callback);
 }

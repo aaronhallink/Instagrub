@@ -1,0 +1,90 @@
+{
+    "project": {
+        "name": "Instagrub",
+        "description": "",
+        "version": "0.2.0"
+    },
+    "files": {
+        "src\\api.js": {
+            "name": "src\\api.js",
+            "modules": {},
+            "classes": {
+                "api": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "api": {
+            "name": "api",
+            "shortname": "api",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src\\api.js",
+            "line": 2,
+            "description": "This class defines an object used to interact with the Yummly API",
+            "static": 1,
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "src\\api.js",
+            "line": 10,
+            "description": "Keeps the api prototype static, we only need one copy.",
+            "is_constructor": 1,
+            "class": "api"
+        },
+        {
+            "file": "src\\api.js",
+            "line": 22,
+            "description": "Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.",
+            "itemtype": "method",
+            "name": "SearchRecipe",
+            "params": [
+                {
+                    "name": "args",
+                    "description": "The parameters for the searchRecipe Yummly API call.",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The function excuted with the returned JSON.",
+                    "type": "Function"
+                }
+            ],
+            "class": "api"
+        },
+        {
+            "file": "src\\api.js",
+            "line": 33,
+            "description": "Use the PHP backend to search for a specific recipe must use the recipe's unique ID.",
+            "itemtype": "method",
+            "name": "getRecipe",
+            "params": [
+                {
+                    "name": "args",
+                    "description": "The parameters for the getRecipe Yummly API call.",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The function executed with the returned JSON.",
+                    "type": "Function"
+                }
+            ],
+            "class": "api"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nKeeps the api prototype static, we only need one copy.",
+            "line": " src\\api.js:10"
+        }
+    ]
+}

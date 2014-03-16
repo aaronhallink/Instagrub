@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'js/*.js',
+        src: 'src/*.js',
         dest: 'build/<%= pkg.name %>.min.js'
       }
     },
@@ -18,30 +18,29 @@ module.exports = function(grunt) {
                 description: '<%= pkg.description %>',
                 version: '<%= pkg.version %>',
                 options: {
-                    paths: 'js',
+                    paths: 'src',
                     outdir: 'docs'
                 }
             }
        },
     jasmine: {
             compile: {
-                src: 'js/*.js',
+                src: 'src/*.js',
                 options: {
-                    specs: 'jasmine/spec/*Spec.js',
+                    specs: 'spec/*Spec.js',
                     //template: 'test.tmpl',
                     //helpers: 'test/helpers/*.js',
-                    keepRunner: true
+                    keepRunner: false
                 }
             }
     },
 	clean: {
             src: ['docs', 'build']
-	
 	}
   });
 
   // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-yuidoc');
+	grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
