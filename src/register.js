@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
 This class contains functions necessary to the registration of a new user.
 @class register
@@ -11,6 +12,8 @@ Updates the page to show an error when a form with invalid fields is submitted.
 **/
 =======
 >>>>>>> 9b7ff04e7f8e3c7e724b1467ace115ffc8a00e17
+=======
+>>>>>>> 9b7ff04e7f8e3c7e724b1467ace115ffc8a00e17
 function showError()
 {
 	document.getElementById("form_error_msg").style.display = 'block';
@@ -18,10 +21,13 @@ function showError()
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
 Checks the registration form to see if all fields are valid.
 @event validateForm
 **/
+=======
+>>>>>>> 9b7ff04e7f8e3c7e724b1467ace115ffc8a00e17
 =======
 >>>>>>> 9b7ff04e7f8e3c7e724b1467ace115ffc8a00e17
 function validateForm()
