@@ -1,4 +1,9 @@
-//var ingredients_list = newArray();
+/**
+A collection of general functions used in the Intsagrub application
+@module scripts
+@class scripts
+
+**/
 var output="";
 var querySearch="";
 var ingredients = new Array();
@@ -9,10 +14,13 @@ var checkMatches = 0;
 var checkRecipeList = 0;
 var recipeList = new Array();
 
-// This will display the ingredients that the user added to the text area 
+/**
+Displays the ingredients that the user added to the text area. 
+@method displayIngredients
+**/
 function displayIngredient(){
 	var name = document.getElementById('query').value;
-	if(checkIngredient(name)==1){
+	if(checkIngredient(name)){
 		alert("You already entered that!");
 		return;
 	}
@@ -32,36 +40,23 @@ function displayIngredient(){
 	}
 }
 
-// Checks whether or not the ingredient was already inputted or not
+/**
+Checks whether or not the given ingredient was already inputted.
+
+@method checkIngredient
+@param {String} name The name of the ingredient to check.
+@return {boolean} `true` if the ingredient **`name`** has been inputted by the user. Returns `false` otherwise.
+**/
 function checkIngredient(name){
 	for(i=0; i<ingredients.length; i++){
 		if(ingredients[i]==name){
-			return 1;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
-// these functions change the image of the buttons based on the press
-function changeImageAdd(){
-	var target = document.getElementById('addImage');
-	target.src = "images/add_pressed.png";
-}
 
-function revertImageAdd(){
-	var target = document.getElementById('addImage');
-	target.src = "images/add_unpressed.png";
-}
-
-function changeImageSearch(){
-	var target = document.getElementById('searchImage');
-	target.src = "images/search_pressed.png";
-}
-
-function revertImageSearch(){
-	var target = document.getElementById('searchImage');
-	target.src = "images/search_unpressed.png";
-}
 // This function makes the query string, then calls the api object to make a api search
 // Then it gets the matches and displays them
 
@@ -92,6 +87,12 @@ function recurse(input, callback, output) {
 	});
 }
 
+/**
+This function makes the query string, then calls the api object to make a api search
+Then it gets the matches and displays them.
+
+@method recipeSearch
+**/
 function recipeSearch(){
     var ingredients_copy = new Array();
     for(var i=0; i<ingredients.length; i++)
@@ -159,52 +160,7 @@ function recipeSearch(){
             }
         }
         updateMatches();
-        /*for(var c = 0; c<6; c++)
-        {
-            for(var i = 0; i < d.length; i++)
-            {
-                for(var j = 0; j < d[i].matches.length; j++)
-                {
-                    var match = true;
-                    var count = c;
-                    if(recipeIds.indexOf(d[i].matches[j].id)==-1)
-                    {
-                        recipeIds.push(d[i].matches[j].id);
-                        for(var k = 0; k<d[i].matches[j].ingredients.length && match; k++)
-                        {
-                            if(c==0)
-                            {
-                                if(ingredients.indexOf(d[i].matches[j].ingredients[k].replace(' ',"+"))<0)
-                                {
-                                    match = false;
-                                }
-                            }
-                            else
-                            {
-                                if(ingredients.indexOf(d[i].matches[j].ingredients[k].replace(' ',"+"))<0)
-                                {
-                                    count--;
-                                    if(count<0)
-                                        match = false;
-                                }
-                            }
- 
-                        }
-                    }
-                    if(match){
-                        if(c==0)
-                        {
-                            console.log("adding:");
-                            console.log(d[i].matches[j].id);
-                        }
-                        correctMatches.push(d[i].matches[j]);
-                    }
-                }
- 
-            }
-        }
- 
-        updateMatches();*/
+
         for(var i=0; i<correctMatches.length; i++)
         {
             var recipeImg = new Image(100,100);
@@ -232,78 +188,12 @@ function recipeSearch(){
         }
         update();
     });
-    /*console.log(recipeList.length);*/
-    /*for(i=0;i<ingredients.length;i++){
-        if(i!=ingredients.length-1)
-            querySearch += ingredients[i] + "+";
-        else
-            querySearch += ingredients[i];
-    }
-    if(querySearch==""){
-        alert("Please enter ingredients!");
-        return;
-    }
-    api().searchRecipe(querySearch,
-        function(data){
-            console.log(data);
-            if(check == 1){
-                while(document.getElementById('results_target').hasChildNodes()){
-                    document.getElementById('results_target').removeChild(document.getElementById('results_target').lastChild);
-                }
-            }
-            var correctMatches = new Array();
-            for(var i = 0; i<data.matches.length; i++)
-            {
-                var match = true;
-                for(var j = 0; j<data.matches[i].ingredients.length && match; j++)
-                {
-                    console.log(data.matches[i].ingredients[j].split(' ').join("+"));
-                    if(ingredients.indexOf(data.matches[i].ingredients[j].split(' ').join("+"))<0)
-                    {
-                        match = false;
-                    }
- 
-                }
-                if(match){
-                    correctMatches.push(data.matches[i]);
-                }
- 
-            }
-            updateMatches();
-            console.log(correctMatches.length);
-            for(var i=0; i<correctMatches.length; i++)
-            {
-                var recipeImg = new Image(100,100);
-                recipeImg.src = correctMatches[i].smallImageUrls[0];
-                recipeImg.border = 1;
-                var recipeName=document.createTextNode(correctMatches[i].recipeName);
- 
-                var ingredientsList = "Ingredients:\n";
- 
-                var List = document.createTextNode(ingredientsList);
- 
- 
-                document.getElementById('results_target').appendChild(recipeImg);
-                document.getElementById('results_target').appendChild(document.createElement('br'));
-                document.getElementById('results_target').appendChild(recipeName);
-                document.getElementById('results_target').appendChild(document.createElement('br'));
-                document.getElementById('results_target').appendChild(document.createTextNode('Ingredients:'));
-                document.getElementById('results_target').appendChild(document.createElement('br'));
-                for(var j=0; j<correctMatches[i].ingredients.length; j++){
-                    document.getElementById('results_target').appendChild(document.createTextNode((j+1) + ". " + correctMatches[i].ingredients[j]));
-                    document.getElementById('results_target').appendChild(document.createElement('br'));
-                }
-            }
-            update();
- 
-        });*/
-    /*querySearch = "";
-    if(document.getElementById('results_target').hasChildNodes()){
-    }
-}*/
+}
+
 function update(){
     check = 1;
 }
+
 function updateMatches(){
     checkMatches = 1;
 }
