@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\api.js - Instagrub</title>
+    <title>src\register.js - Instagrub</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,54 +88,73 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\api.js</h1>
+                        <h1 class="file-heading">File: src\register.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-jQuery( document ).ready(function( $ ) {});
-/** 
-This class defines an object used to interact with the Yummly API
-
-@class api
-@static
-@constructor
+/**
+This class contains functions necessary to the registration of a new user.
+@class register
 **/
 
 /**
-Keeps the api prototype static, we only need one copy.
-@constructor api
-**/
+Updates the page to show an error when a form with invalid fields is submitted.
 
-function api() {
-	if(window.sharedAPI)
-		return window.sharedAPI;
-	else if( !(this instanceof api) )
-		return window.sharedAPI = new api;
+@event showError
+**/
+function showError()
+{
+	document.getElementById(&quot;form_error_msg&quot;).style.display = &#x27;block&#x27;;
+
 }
 
 /**
-Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.
-@method searchRecipe
-@param args {String} The parameters for the searchRecipe Yummly API call.
-@param callback {function} The function excuted with the returned JSON.
+Checks the registration form to see if all fields are valid.
+@event validateForm
 **/
-api.prototype.searchRecipe = function(args, callback){
-	var backend = &quot;../backend.php?q=search&amp;p=&quot;;
-	var apiJson= $.getJSON(backend, {p : args }, callback);
+function validateForm()
+{ 
+	delete window.error_msg;
+	var error_msg = &#x27;&lt;h4 style=&quot;font-size:16px;&quot;&gt;The following errors occurred while processing your submission. Please make the following corrections to finish your submission.&lt;/h4&gt;&#x27;;
+	var uname = document.forms[&quot;reg_form&quot;][&quot;name&quot;].value;
+	var email = document.forms[&quot;reg_form&quot;][&quot;email&quot;].value;
+	var pass1 = document.forms[&quot;reg_form&quot;][&quot;pass1&quot;].value;
+	var pass2 = document.forms[&quot;reg_form&quot;][&quot;pass2&quot;].value;
+	var php_email = &quot;&lt;?php echo isset($_GET[&#x27;dup&#x27;]); ?&gt;&quot;;
+	console.log(php_email);
+	//Check if they&#x27;re all valid
+	if (email==null || email==&quot;&quot; || uname==null || uname==&quot;&quot; || pass1==null || pass1==&quot;&quot; || pass2==null || pass2==&quot;&quot; || pass1 !== pass2)
+	{
+		//Check each line of the form
+		if (uname==null || uname==&quot;&quot;)
+	    {
+			error_msg += &#x27;&lt;p&gt;The field &quot;Your Name&quot; was left blank.&lt;/p&gt;&#x27;;
+		}
+		if (email==null || email==&quot;&quot;)
+		{
+		    error_msg += &#x27;&lt;p&gt;The field &quot;Your Email&quot; was left blank.&lt;/p&gt;&#x27;;
+		}
+		if (pass1==null || pass1==&quot;&quot;)
+		{
+		    error_msg += &#x27;&lt;p&gt;The field &quot;Password 1&quot; was left blank.&lt;/p&gt;&#x27;;
+		}
+		if (pass2==null || pass2==&quot;&quot;)
+		{
+		    error_msg += &#x27;&lt;p&gt;The field &quot;Password 2&quot; was left blank.&lt;/p&gt;&#x27;;
+		}
+		if (pass1 !== pass2)
+		{
+			error_msg += &#x27;&lt;p&gt;Your passwords did not match.&lt;/p&gt;&#x27;;
+		}
+		if (php_email==1)
+		{
+			error_msg += &#x27;&lt;p&gt;Your email is already in use.&lt;/p&gt;&#x27;;
+		}
+		showError();
+		document.getElementById(&#x27;form_error_msg&#x27;).innerHTML = error_msg;
+		return false;
+	}
 }
-
-/**
-Use the PHP backend to search for a specific recipe must use the recipe&#x27;s unique ID.
-@method getRecipe
-@param args {String} The parameters for the getRecipe Yummly API call.
-@param callback {function} The function executed with the returned JSON.
-**/
-api.prototype.getRecipe = function(args, callback){
-	var backend = &quot;../backend.php?q=get&amp;p=&quot;;
-	var apiJson= $.getJSON(backend, {p : args }, callback);
-}
-
-
     </pre>
 </div>
 

@@ -22,14 +22,6 @@ describe("Scripts", function () {
 		searchImgSrc = searchButton.src;
 	});
 	
-	describe("when the add button is clicked", function() {
-	
-		it("should change to a pressed button", function() {
-			addButton.click()
-			expect(addImgSrc).toBe("images/add_pressed.png");
-		});
-	});
-	
 	describe("when a new ingredient is submitted", function() {
 		it("should update the text area", function() {
 			query.value = "corn";
@@ -45,14 +37,14 @@ describe("Scripts", function () {
 	});
 	
 	describe("when an ingredient is already added", function () {	
-		it("should return 0", function () {
-			expect(checkIngredient('corn')).toBe(1);
+		it("should return 1", function () {
+			expect(checkIngredient('corn')).toBe(true);
 		});
 	});
 	
 	describe("when an ingredient isn't already added", function() {
-		it("should return 0", function() {
-			expect(checkIngredient('ham')).toBe(0);
+		it("should return false", function() {
+			expect(checkIngredient('ham')).toBe(false);
 		});
 	});
 	

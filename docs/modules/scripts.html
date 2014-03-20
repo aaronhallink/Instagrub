@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\api.js - Instagrub</title>
+    <title>scripts - Instagrub</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,55 +88,62 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\api.js</h1>
+                        <h1>scripts Module</h1>
+<div class="box clearfix meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-jQuery( document ).ready(function( $ ) {});
-/** 
-This class defines an object used to interact with the Yummly API
+    
 
-@class api
-@static
-@constructor
-**/
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_scripts.js.html#l1"><code>src\scripts.js:1</code></a>
+        </div>
+    
 
-/**
-Keeps the api prototype static, we only need one copy.
-@constructor api
-**/
-
-function api() {
-	if(window.sharedAPI)
-		return window.sharedAPI;
-	else if( !(this instanceof api) )
-		return window.sharedAPI = new api;
-}
-
-/**
-Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.
-@method searchRecipe
-@param args {String} The parameters for the searchRecipe Yummly API call.
-@param callback {function} The function excuted with the returned JSON.
-**/
-api.prototype.searchRecipe = function(args, callback){
-	var backend = &quot;../backend.php?q=search&amp;p=&quot;;
-	var apiJson= $.getJSON(backend, {p : args }, callback);
-}
-
-/**
-Use the PHP backend to search for a specific recipe must use the recipe&#x27;s unique ID.
-@method getRecipe
-@param args {String} The parameters for the getRecipe Yummly API call.
-@param callback {function} The function executed with the returned JSON.
-**/
-api.prototype.getRecipe = function(args, callback){
-	var backend = &quot;../backend.php?q=get&amp;p=&quot;;
-	var apiJson= $.getJSON(backend, {p : args }, callback);
-}
+    
+</div>
 
 
-    </pre>
+
+<div class="box intro">
+    <p>A collection of general functions used in the Intsagrub application</p>
+
+</div>
+
+
+
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        
+            <p>This module provides the following classes:</p>
+
+            <ul class="module-classes">
+            
+                <li class="module-class">
+                    <a href="../classes/api.html">
+                        api
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/register.html">
+                        register
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/scripts.html">
+                        scripts
+                    </a>
+                </li>
+            
+            </ul>
+        
+    </div>
+
+    <div class="yui3-u-1-2">
+        
+    </div>
 </div>
 
                     </div>

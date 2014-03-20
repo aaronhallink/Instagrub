@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\api.js - Instagrub</title>
+    <title>register - Instagrub</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,55 +88,185 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src\api.js</h1>
+                        <h1>register Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-jQuery( document ).ready(function( $ ) {});
-/** 
-This class defines an object used to interact with the Yummly API
+    
 
-@class api
-@static
-@constructor
-**/
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_register.js.html#l1"><code>src\register.js:1</code></a>
+        </div>
+    
 
-/**
-Keeps the api prototype static, we only need one copy.
-@constructor api
-**/
+    
+        
+            Module: <a href="../modules/scripts.html">scripts</a>
+        
+    
 
-function api() {
-	if(window.sharedAPI)
-		return window.sharedAPI;
-	else if( !(this instanceof api) )
-		return window.sharedAPI = new api;
-}
-
-/**
-Uses the PHP backend to request a JSON that will have 10 recipes based on the search terms.
-@method searchRecipe
-@param args {String} The parameters for the searchRecipe Yummly API call.
-@param callback {function} The function excuted with the returned JSON.
-**/
-api.prototype.searchRecipe = function(args, callback){
-	var backend = &quot;../backend.php?q=search&amp;p=&quot;;
-	var apiJson= $.getJSON(backend, {p : args }, callback);
-}
-
-/**
-Use the PHP backend to search for a specific recipe must use the recipe&#x27;s unique ID.
-@method getRecipe
-@param args {String} The parameters for the getRecipe Yummly API call.
-@param callback {function} The function executed with the returned JSON.
-**/
-api.prototype.getRecipe = function(args, callback){
-	var backend = &quot;../backend.php?q=get&amp;p=&quot;;
-	var apiJson= $.getJSON(backend, {p : args }, callback);
-}
+    
+</div>
 
 
-    </pre>
+
+<div class="box intro">
+    <p>This class contains functions necessary to the registration of a new user.</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+        
+        
+        
+            <li class="api-class-tab events"><a href="#events">Events</a></li>
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+
+            
+
+            
+
+            
+                <div class="index-section events">
+                    <h3>Events</h3>
+
+                    <ul class="index-list events">
+                        
+                            <li class="index-item event">
+                                <a href="#event_showError">showError</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item event">
+                                <a href="#event_validateForm">validateForm</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+        </div>
+
+        
+
+        
+
+        
+
+        
+            <div id="events" class="api-class-tabpanel">
+                <h2 class="off-left">Events</h2>
+
+                
+                    <div id="event_showError" class="events item">
+    <h3 class="name"><code>showError</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_register.js.html#l6"><code>src\register.js:6</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Updates the page to show an error when a form with invalid fields is submitted.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+                
+                    <div id="event_validateForm" class="events item">
+    <h3 class="name"><code>validateForm</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_register.js.html#l17"><code>src\register.js:17</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks the registration form to see if all fields are valid.</p>
+
+    </div>
+
+    
+
+
+    
+</div>
+
+                
+            </div>
+        
+    </div>
 </div>
 
                     </div>
