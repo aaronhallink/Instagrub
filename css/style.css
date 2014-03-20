@@ -1,43 +1,167 @@
 body {
 	font-family: 'Open Sans', sans-serif;
-	background-color: #ffb005;
 }
-
-#wrap {
-	width: 500px;
-	margin: auto;
-}
-#header {
-	background-image: url('../images/header.png');
-	height:200px;
-	width:500px;
-	background-repeat: no-repeat;
-}
-
-#seach_box {
-	margin: auto;
-}
-
-#search_textbox {
-	background-color: #ffb005;
-	margin: 0 auto;
+* {
+	margin:0;
+	padding: 0;
 }
 
 
-input[type="text"]{
-	background-color: #ffeabd;
-}
+	#wrap {
+		padding: 10px;
+	}
+	#header {
+		margin-bottom: 5px;
+		height: 30px;
+		padding: 20px;
+		/* IE10 Consumer Preview */ 
+		background-image: -ms-linear-gradient(bottom, #59951d 0%, #80bf28 100%);
 
-input[type="password"]{
-	background-color: #ffeabd;
-}
+		/* Mozilla Firefox */ 
+		background-image: -moz-linear-gradient(bottom, #59951d 0%, #80bf28 100%);
 
-input[type="submit"]{
-	background-image: url('../images/search_unpressed.png');
-}
+		/* Opera */ 
+		background-image: -o-linear-gradient(bottom, #59951d 0%, #80bf28 100%);
 
-#searchImage {
-	background-color: transparent;
-	width: 300px;
-}
+		/* Webkit (Safari/Chrome 10) */ 
+		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #59951d), color-stop(1, #80bf28));
 
+		/* Webkit (Chrome 11+) */ 
+		background-image: -webkit-linear-gradient(bottom, #59951d 0%, #80bf28 100%);
+
+		/* W3C Markup, IE10 Release Preview */ 
+		background-image: linear-gradient(to top, #59951d 0%, #80bf28 100%);
+
+		border-bottom: 1px solid #59951d;
+	}
+	#search_and_btn {
+		width: calc(80% + 22px);
+		height: auto;
+		padding-bottom: 35px;
+	}
+	#query { 
+		margin-right: 15px;
+		float: left;
+		background-color: white;
+		border-radius: 5px;
+		margin-bottom: 5px;
+	    font-family: 'Open Sans', Helvetica, sans-serif;
+	    color: #333; 
+	    padding: 8px;
+	    border: 3px solid #dcdcdc; 
+	    width: -moz-calc(100% - 104px);
+	    width: -webkit-calc(100% - 104px);
+	    width: calc(100% - 104px);
+	    height:20px; 
+	    
+	  } 
+	#query:hover { 
+	   border: 3px solid #2F75BA; 
+
+	    
+	  } 
+	#query:focus { 
+	border: 3px solid #2F75BA; 
+
+	    outline: none; 
+	    background: rgb(255, 255, 255); 
+	} 
+
+
+
+	#search_textbox {
+		background-color: #ffb005;
+		margin: 0 auto;
+	}
+	#input_target {
+		height: auto;
+		width:80%;
+		background-color: white;
+		border-radius: 5px;
+		margin-bottom: 5px;
+	    font-family: 'Open Sans', Helvetica, sans-serif;
+	    color: #333; 
+	    padding: 8px;
+	    border: 3px solid #dcdcdc; 
+	}
+
+	#searchImage {
+		background-color: transparent;
+	}
+
+	#searchImage {
+		margin-bottom: 15px;
+		-moz-box-shadow: 0px 6px 0px 0px #59951d;
+		-webkit-box-shadow: 0px 6px 0px 0px #59951d;
+		box-shadow: 0px 6px 0px 0px #59951d;
+		background-color:#80bf28;
+		-moz-border-radius:8px;
+		-webkit-border-radius:8px;
+		border-radius:8px;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Trebuchet MS;
+		font-size:28px;
+		padding:15px 76px;
+		text-decoration:none;
+		text-shadow:0px -1px 0px #5b8a3c;
+	}
+	#searchImage:active {
+		position:relative;
+		top: 4px;
+		-moz-box-shadow: 0px 6px 0px 0px #59951d;
+		-webkit-box-shadow: 0px 6px 0px 0px #59951d;
+		box-shadow: 0px 2px 0px 0px #59951d;
+		background-color:#80bf28;
+		-moz-border-radius:8px;
+		-webkit-border-radius:8px;
+		border-radius:8px;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Trebuchet MS;
+		font-size:28px;
+		padding:15px 76px;
+		text-decoration:none;
+		text-shadow:0px -1px 0px #5b8a3c;
+	}
+
+	.small_btn {
+		float: left;
+		-moz-box-shadow: 0px 6px 0px 0px #59951d;
+		-webkit-box-shadow: 0px 6px 0px 0px #59951d;
+		box-shadow: 0px 6px 0px 0px #59951d;
+		background-color:#80bf28;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
+		border-radius:5px;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Trebuchet MS;
+		font-size:16px;
+		padding:7px 20px;
+		text-decoration:none;
+		text-shadow:0px -1px 0px #5b8a3c;
+	}
+
+	.small_btn:active {
+		position:relative;
+		top: 4px;
+		-moz-box-shadow: 0px 6px 0px 0px #59951d;
+		-webkit-box-shadow: 0px 6px 0px 0px #59951d;
+		box-shadow: 0px 2px 0px 0px #59951d;
+		background-color:#80bf28;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
+		border-radius:5px;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Trebuchet MS;
+		font-size:16px;
+		padding:7px 20px;
+		text-decoration:none;
+		text-shadow:0px -1px 0px #5b8a3c;
+}
