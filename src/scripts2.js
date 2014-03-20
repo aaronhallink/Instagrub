@@ -8,90 +8,90 @@ var check = 0;
 var checkMatches = 0;
 var checkRecipeList = 0;
 var recipeList = new Array();
-
-// This will display the ingredients that the user added to the text area 
+ 
+// This will display the ingredients that the user added to the text area
 function displayIngredient(){
-	var name = document.getElementById('query').value;
-	if(checkIngredient(name)==1){
-		alert("You already entered that!");
-		return;
-	}
-	if(name!=""){
-		name = name.split(' ').join("+");
-		ingredients.push(name);
-		output = "";
-		for(i = 0; i<ingredients.length; i++){
-			output += (ingredients[i].split('+').join(' ') + "\n");
-		}
-		document.getElementById('input_target').innerHTML = output;
-		document.getElementById('input_target').placeholder=null;
-	}
-	else{
-		alert("Enter an ingredient!");
-		document.getElementById('input_target').innerHTML = output;
-	}
+    var name = document.getElementById('query').value;
+    if(checkIngredient(name)==1){
+        alert("You already entered that!");
+        return;
+    }
+    if(name!=""){
+        name = name.split(' ').join("+");
+        ingredients.push(name);
+        output = "";
+        for(i = 0; i<ingredients.length; i++){
+            output += (ingredients[i].split('+').join(' ') + "\n");
+        }
+        document.getElementById('input_target').innerHTML = output;
+        document.getElementById('input_target').placeholder=null;
+    }
+    else{
+        alert("Enter an ingredient!");
+        document.getElementById('input_target').innerHTML = output;
+    }
 }
-
+ 
 // Checks whether or not the ingredient was already inputted or not
 function checkIngredient(name){
-	for(i=0; i<ingredients.length; i++){
-		if(ingredients[i]==name){
-			return 1;
-		}
-	}
-	return 0;
+    for(i=0; i<ingredients.length; i++){
+        if(ingredients[i]==name.split(' ').join('+')){
+            return 1;
+        }
+    }
+    return 0;
 }
-
+ 
 // these functions change the image of the buttons based on the press
 function changeImageAdd(){
-	var target = document.getElementById('addImage');
-	target.src = "images/add_pressed.png";
+    var target = document.getElementById('addImage');
+    target.src = "images/add_pressed.png";
 }
-
+ 
 function revertImageAdd(){
-	var target = document.getElementById('addImage');
-	target.src = "images/add_unpressed.png";
+    var target = document.getElementById('addImage');
+    target.src = "images/add_unpressed.png";
 }
-
+ 
 function changeImageSearch(){
-	var target = document.getElementById('searchImage');
-	target.src = "images/search_pressed.png";
+    var target = document.getElementById('searchImage');
+    target.src = "images/search_pressed.png";
 }
-
+ 
 function revertImageSearch(){
-	var target = document.getElementById('searchImage');
-	target.src = "images/search_unpressed.png";
+    var target = document.getElementById('searchImage');
+    target.src = "images/search_unpressed.png";
 }
 // This function makes the query string, then calls the api object to make a api search
 // Then it gets the matches and displays them
-
+ 
 function querySearch(arrayOfParams, callback, output){
-	if(arrayOfParams.length==0) 
-		return callback(output);
-	if(!output)
-		output = [];
-	api();
-	api().searchRecipe(arrayOfParams.pop(),function(data)
-	{
-		output.push(data);
-		querySearch(arrayOfParams, callback,output);
-	});
+    if(arrayOfParams.length==0)
+        return callback(output);
+    if(!output)
+        output = [];
+    api();
+    api().searchRecipe(arrayOfParams.pop(),function(data)
+    {
+        output.push(data);
+        querySearch(arrayOfParams, callback,output);
+    });
 }
-
+ 
 function recurse(input, callback, output) {
-	if(!output)
-		output = [];
-	if(input.length == 0)
-	{
-		return callback(output);
-	}
-	var data = input.pop();
-	api().searchRecipe(data, function(data){
-	output.push(data);
-	recurse(input,callback,output);
-	});
+    if(!output)
+        output = [];
+    if(input.length == 0)
+    {
+        return callback(output);
+    }
+    var data = input.pop();
+    api().searchRecipe(data, function(data){
+    output.push(data);
+    recurse(input,callback,output);
+    });
 }
-
+ 
 function recipeSearch(){
     var ingredients_copy = new Array();
     for(var i=0; i<ingredients.length; i++)
@@ -299,23 +299,44 @@ function recipeSearch(){
         });*/
     /*querySearch = "";
     if(document.getElementById('results_target').hasChildNodes()){
-    }
-}*/
+    }*/
+}
+ 
 function update(){
     check = 1;
 }
 function updateMatches(){
     checkMatches = 1;
 }
-
-
-/*
-Ingredients:
-beer
-chicken
-thyme
-olive oil
-*/
+/*function updateRecipeList()
+{
+     for(var i = 0; i < recipeList.length; i++)
+     {
+        console.log(recipeList[i].length);
+     }
+}*/
+// Old way of displaying
+/*function resultsCreate(){
+    for(var i = 0; i<recipes.length; i++){
+        var recipeImg = new Image(100,100);
+        recipeImg.src = recipes[i].smallImageUrls[0];
+        recipeImg.border = 1;
+        var recipeName=document.createTextNode(recipes[i].recipeName);
+ 
+        var ingredientsList = "Ingredients:\n";
+ 
+        var List = document.createTextNode(ingredientsList);
+        document.getElementById('results_target').appendChild(recipeImg);
+        document.getElementById('results_target').appendChild(recipeName);
+        document.getElementById('results_target').appendChild(document.createElement('br'));
+        document.getElementById('results_target').appendChild(document.createTextNode('Ingredients:'));
+        document.getElementById('results_target').appendChild(document.createElement('br'));
+        for(var j=0; j<recipes[i].ingredients.length; j++){
+            document.getElementById('results_target').appendChild(document.createTextNode(j + ". " + recipes[i].ingredients[j]));
+            document.getElementById('results_target').appendChild(document.createElement('br'));
+        }
+    }
+}*/
 /*
 0. herbs
 1. olive oil
