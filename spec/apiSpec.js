@@ -5,7 +5,7 @@ describe('API', function() {
 	var data = null;
 	
 	beforeEach( function() {
-		API = new api();
+		API = api();
 		console.log(API);
 		spy = {
 			'f' : function(data) {
@@ -20,12 +20,14 @@ describe('API', function() {
 	});
 	
 	it('should be static', function() {
-		expect(new api()).toEqual(API);
+		expect(api()).toEqual(API);
 	});
 	
 	it('should call the callback function', function() {
-		API.SearchRecipe("corn", spy.f(data));
+		API.searchRecipe("corn", spy.f(data));
+		API.searchRecipe("corn", spy.f(data));
 		expect(spy.f).toHaveBeenCalled();
+		expect(spy.f.callCount).toBe(2);
 	});
 	
 	

@@ -57,9 +57,16 @@ function checkIngredient(name){
 }
 
 
-// This function makes the query string, then calls the api object to make a api search
-// Then it gets the matches and displays them
+/**
+Makes the query string, then calls the api object to make a api search. Then gets the matched recipes and displays them.
+@method querySearch
 
+@param {Array} arrayOfParams Array of strings, containing recipe search terms.
+@param {function} callback The function to be called when this finishes executing.
+@param {} output
+
+@return The output of the `callback` function, called with arguments `output`
+**/
 function querySearch(arrayOfParams, callback, output){
 	if(arrayOfParams.length==0) 
 		return callback(output);
@@ -72,7 +79,16 @@ function querySearch(arrayOfParams, callback, output){
 		querySearch(arrayOfParams, callback,output);
 	});
 }
+/**
+Recursively makes an api search call for each ingredient submitted. Needed to deal with asynchronous API calls.
+@method recurse
 
+@param input {}
+@param callback {function} The function to be called when this function finishes executing.
+@param output {}
+
+@return The output of the `callback` function, called with arguments `output`
+**/
 function recurse(input, callback, output) {
 	if(!output)
 		output = [];
@@ -94,10 +110,6 @@ Then it gets the matches and displays them.
 @method recipeSearch
 **/
 function recipeSearch(){
-
-	// Show the loading ticker
-	showImage();
-
     var ingredients_copy = new Array();
     for(var i=0; i<ingredients.length; i++)
     {
@@ -192,28 +204,24 @@ function recipeSearch(){
         }
         update();
     });
-	
-	// Hide the loading ticker
-	
 }
 
+/**
+Resets check variable to 1.
+@method update
+**/
 function update(){
     check = 1;
-	hideImage();
 }
 
+/**
+Resets checkMatches variable to 1.
+@method updateMatches
+**/
 function updateMatches(){
     checkMatches = 1;
 }
 
-function showImage() {
-    document.getElementById("Tomato").style.display = 'block';
-}
-
-function hideImage() {
-	document.getElementById("Tomato").style.display = 'none';
-    document.getElementById("Tomato").style.visibility = 'hidden';
-}
 
 /*
 Ingredients:
