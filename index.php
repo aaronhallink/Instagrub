@@ -5,6 +5,8 @@
 
 <link rel='stylesheet' type='text/css' href='css/style.css' />
 
+
+
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
 	
@@ -17,6 +19,10 @@
 
 </head>
 <body>
+
+<!-- Image for spinner -->
+<img src="images/Tomato.gif" id="Tomato" style="position:absolute;margin-left:50%;margin-top:200px;">
+
 <?php
 	session_start();
 	require('config.php');
@@ -56,5 +62,11 @@
 	<div id="results_target">
 	</div>
 </div>
+
+<script>
+	document.getElementById("Tomato").style.display = 'none';
+	
+</script>
+
 </body>
 </html>
