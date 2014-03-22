@@ -32,6 +32,8 @@ function displayIngredient(){
 			output += "<span style='float:left;'>"+(ingredients[i].split('+').join(' ') + "</span><span onClick='removeIngredient("+i+")' style='float:right;'>[X]</span><br/>");
 		}
 		document.getElementById('input_target').innerHTML = output;
+        //Clear the form after adding the ingredient
+        document.getElementById('query').value = "";
 	}
 	else{
 		alert("Enter an ingredient!");
