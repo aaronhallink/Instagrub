@@ -29,15 +29,32 @@ function displayIngredient(){
 		ingredients.push(name);
 		output = "";
 		for(i = 0; i<ingredients.length; i++){
-			output += (ingredients[i].split('+').join(' ') + "\n");
+			output += "<span style='float:left;'>"+(ingredients[i].split('+').join(' ') + "</span><span onClick='removeIngredient("+i+")' style='float:right;'>[X]</span><br/>");
 		}
 		document.getElementById('input_target').innerHTML = output;
-		document.getElementById('input_target').placeholder=null;
 	}
 	else{
 		alert("Enter an ingredient!");
 		document.getElementById('input_target').innerHTML = output;
 	}
+}
+
+// Removes an ingredient from the list when the user clicks [X]
+function removeIngredient(ing_id) 
+{   
+    for (i = 0; i < ingredients.length; i++)
+    {
+        if (ing_id==i)
+        {   
+            ingredients.splice(i, 1);
+            output = "";
+            for(i = 0; i < ingredients.length; i++)
+            {
+                output += "<span style='float:left;'>"+(ingredients[i].split('+').join(' ') + "</span><span onClick='removeIngredient("+i+")' style='float:right;'>[X]</span><br/>");
+            }
+        }
+    }
+    document.getElementById('input_target').innerHTML = output;
 }
 
 /**

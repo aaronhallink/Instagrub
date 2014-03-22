@@ -43,7 +43,7 @@
 			?>
 
 			<div id="login" style="float:right;">
-			<a href="login.php">Login</a> or <a href="register.php">Sign up</a>
+			<a href="login.php" >Login</a> or <a href="register.php">Sign up</a>
 			</div>
 
 			<?php
@@ -55,11 +55,17 @@
 	<div id="search_box">
 		<form name="post_msg" method="post">
 			<center><div id="search_and_btn"><input type="text" id="query" name="query" maxlength="150" placeholder="Enter ingredient here"/><span  class="small_btn"  onclick="displayIngredient()"/>Add</span></div></center>
-			<center><textarea readonly rows="30" cols="50" id="input_target" alignment="center" placeholder="This will display what has already been inputted above" ></textarea></center>
+			<br/>
+			<center><div id="input_target">
+				
+
+			</div></center>
+			<br/>
 			<center><span id="searchImage" onclick="recipeSearch()" />Find Recipes</span></center>
 	</div>
+
 	<!--This is where the results will be displayed-->
-	<div id="results_target">
+	<div id="results_target" style="padding:15px;">
 	</div>
 </div>
 
