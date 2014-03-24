@@ -55,4 +55,18 @@ describe("Scripts", function () {
 		});
 	});
 	
+	describe("when update is called", function() {
+		it("should update check", function() {
+			update();
+			expect(check).toBe(1);
+		});
+	});
+	
+	describe("when updateMatches is called", function() {
+		it("should update checkMatches", function() {
+			updateMatches();
+			expect(checkMatches).toBe(1);
+		});
+	});
+	
 });
