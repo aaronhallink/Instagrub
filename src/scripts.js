@@ -41,6 +41,10 @@ function displayIngredient(){
 	}
 }
 
+/**
+ Removes the ingredient when the X is clicked in the text area
+@method removeIngredient
+**/
 // Removes an ingredient from the list when the user clicks [X]
 function removeIngredient(ing_id) 
 {   
@@ -129,6 +133,10 @@ Then it gets the matches and displays them.
 @method recipeSearch
 **/
 function recipeSearch(){
+
+    // Show the loading ticker
+    showImage();	
+	
     var ingredients_copy = new Array();
     for(var i=0; i<ingredients.length; i++)
     {
@@ -231,6 +239,9 @@ Resets check variable to 1.
 **/
 function update(){
     check = 1;
+    
+    // Hide the loading ticker
+    hideImage()
 }
 
 /**
@@ -241,6 +252,24 @@ function updateMatches(){
     checkMatches = 1;
 }
 
+/**
+Displays the spinning tomato gif.
+Called by recipeSearch when the search begins.
+@method showImage
+**/
+function showImage() {
+    document.getElementById("Tomato").style.display = 'block';
+}
+
+/**
+Hides the spinning tomato gif.
+Called by update, when the search finishes.
+@method hideImage
+**/
+function hideImage() {
+	document.getElementById("Tomato").style.display = 'none';
+    document.getElementById("Tomato").style.visibility = 'hidden';
+}
 
 /*
 Ingredients:
