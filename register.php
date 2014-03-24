@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=320">
 <link rel='stylesheet' type='text/css' href='css/style.css' />
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
-<script src="/src/register.js"></script>
+<script src="src/register.js"></script>
 
 
 </head>
@@ -14,7 +15,7 @@
 		<div id="login">
 			<a href="login.php">Login</a> or <a href="register.php">Sign up</a>
 		</div>
-	<div id="header"></div>
+	<div id="header"><h1 style="color:white;margin-top:-5px;float:left;">Instagrub</h1></div>
 
 	<div id="wrapper">
 	<h3>Sign up!</h3>

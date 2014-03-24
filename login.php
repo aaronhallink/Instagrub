@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=320">
 <link rel='stylesheet' type='text/css' href='css/style.css' />
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
@@ -12,7 +13,7 @@
 			<a href="register.php">Don't have an account? Sign up!</a>
 		</div>
 		<br/>
-	<div id="header"></div>
+	<div id="header"><h1 style="color:white;margin-top:-5px;float:left;">Instagrub</h1></div>
 
 	<form name="register" action="auth_user.php" method="post">
 	    Email: <input type="text" name="email" maxlength="30" /><br />
