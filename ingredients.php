@@ -5,13 +5,21 @@
 <link rel='stylesheet' type='text/css' href='css/style.css' />
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
+	<!--
 	<script type="text/javascript" src="src/api.js"></script>
 	<script type="text/javascript" src="src/scripts.js"></script>
+	-->
+	
+	<script type="text/javascript" src="build/Instagrub.min.js"></script>
+
+	
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
 </head>
 <body>
+
+<img src="images/Tomato.gif" id="Tomato" style="position:absolute;margin-left:50%;margin-top:200px;">
+
 <?php
 	session_start();
 	require('config.php');
@@ -62,14 +70,25 @@
 
 		}
 
-	?>
+	?>	
 	</div>
+	<div id="search_and_btn">
+				<center>
+					<select id="filter">
+  						<option value="relevance" selected>Most Relevant</option>
+				  		<option value="rating">Highest Rated</option>
+				  		<option value="preptime">Shortest Time</option>
+					</select>
+				</center>
+			</div>
 		<center><span id="searchImage" onclick="search()" />Find Recipes</span></center>
 		<div id="results_target" style="padding:15px;">
 		</div>
 </div>
 
 <script>
+	document.getElementById("Tomato").style.display = 'none';
+	
 </script>
 
 </body>
