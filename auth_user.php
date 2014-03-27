@@ -7,31 +7,34 @@
 
 	$username = mysql_real_escape_string($username);
 	
-	$conn = mysql_connect($_SESSION['db_name'], $_SESSION['db_username'], $_SESSION['db_password'] );
-	mysql_select_db($_SESSION['db_table'], $conn);
+	$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
 	//Get Password
 	$query = "SELECT password FROM user WHERE email_address='$username';";
-	$result = mysql_query($query);
-	$realpass = mysql_fetch_array($result);
+	$result = mysqli_query($conn, $query);
+	$realpass = mysqli_fetch_array($result);
 
 	//Get Name
 	$query2 = "SELECT name FROM user WHERE email_address='$username';";
-	$result2 = mysql_query($query2);
-	$uname = mysql_fetch_array($result2);
+	$result2 = mysqli_query($conn, $query2);
+	$uname = mysqli_fetch_array($result2);
 	
 	$name = $uname['name'];
 
 	//Get user_id
 	$query2 = "SELECT user_id FROM user WHERE email_address='$username';";
-	$result2 = mysql_query($query2);
-	$uname = mysql_fetch_array($result2);
+	$result2 = mysqli_query($conn, $query2);
+	$uname = mysqli_fetch_array($result2);
+
+	mysqli_close($conn);
 
 	$user_id = $uname['user_id'];
 
 	if(sha1($password)!=$realpass['password'])
 	{
 		echo "Error! Invalid username or password, please try again.";
+		//gives delay before redirecting
+		header('refresh:3;url=login.php');
 	}
 	else
 	{
