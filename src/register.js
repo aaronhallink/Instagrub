@@ -26,7 +26,7 @@ function validateForm()
 	var email = document.forms["reg_form"]["email"].value;
 	var pass1 = document.forms["reg_form"]["pass1"].value;
 	var pass2 = document.forms["reg_form"]["pass2"].value;
-	var php_email = test;
+	var php_email = dup;
 	console.log(php_email);
 	//Check if they're all valid
 	if (email==null || email=="" || uname==null || uname=="" || pass1==null || pass1=="" || pass2==null || pass2=="" || pass1 !== pass2 || php_email==1)
