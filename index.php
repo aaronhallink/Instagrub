@@ -61,6 +61,15 @@
 
 			</div></center>
 			<br/>
+			<div id="search_and_btn">
+				<center>
+					<select id="filter">
+  						<option value="relevance" selected>Most Relevant</option>
+				  		<option value="rating">Highest Rated</option>
+				  		<option value="preptime">Shortest Time</option>
+					</select>
+				</center>
+			</div>
 			<center><span id="searchImage" onclick="recipeSearch()" />Find Recipes</span></center>
 	</div>
 
