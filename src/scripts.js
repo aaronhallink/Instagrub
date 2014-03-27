@@ -126,6 +126,16 @@ function recurse(input, callback, output) {
 	});
 }
 
+function search()
+{
+
+    var my_ingredients = document.getElementById('my_ingredients');
+    console.log (ingredients);
+    ingredients = my_ingredients.innerHTML.replace(/\n|<.*?>/g,'').split(" ").join("+").split("[X]");
+    console.log (ingredients);
+    recipeSearch();
+}
+
 /**
 This function makes the query string, then calls the api object to make a api search
 Then it gets the matches and displays them.
@@ -213,11 +223,15 @@ function recipeSearch(){
             var recipeId = document.createTextNode(correctMatches[i].id);
  
             var ingredientsList = "Ingredients:\n";
- 
+            var link = document.createElement('a');
+            link.appendChild(recipeImg);
+            var yummlyUrl = "http://www.yummly.com/recipe/external/" + correctMatches[i].id;
+            link.href = yummlyUrl;
+            link.target="_blank";
             var List = document.createTextNode(ingredientsList);
  
  
-            document.getElementById('results_target').appendChild(recipeImg);
+            document.getElementById('results_target').appendChild(link);
             document.getElementById('results_target').appendChild(document.createElement('br'));
             document.getElementById('results_target').appendChild(recipeName);
             document.getElementById('results_target').appendChild(document.createElement('br'));
