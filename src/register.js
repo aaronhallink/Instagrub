@@ -60,4 +60,5 @@ function validateForm()
 		document.getElementById('form_error_msg').innerHTML = error_msg;
 		return false;
 	}
+	return true;
 }

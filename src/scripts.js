@@ -13,6 +13,7 @@ var check = 0;
 var checkMatches = 0;
 var checkRecipeList = 0;
 var recipeList = new Array();
+var prepArray = new Array();
 
 /**
 Displays the ingredients that the user added to the text area. 
@@ -44,6 +45,7 @@ function displayIngredient(){
 /**
  Removes the ingredient when the X is clicked in the text area
 @method removeIngredient
+@param ing_id {int} The place of the ingredient in the list, starting from 0.
 **/
 // Removes an ingredient from the list when the user clicks [X]
 function removeIngredient(ing_id) 
@@ -79,29 +81,6 @@ function checkIngredient(name){
 	return false;
 }
 
-
-/**
-Makes the query string, then calls the api object to make a api search. Then gets the matched recipes and displays them.
-@method querySearch
-
-@param {Array} arrayOfParams 
-@param {function} callback The function to be called when this finishes executing.
-@param {} output Array of A
-
-@return The output of the `callback` function, called with arguments `output`
-**/
-function querySearch(arrayOfParams, callback, output){
-	if(arrayOfParams.length==0) 
-		return callback(output);
-	if(!output)
-		output = [];
-	api();
-	api().searchRecipe(arrayOfParams.pop(),function(data)
-	{
-		output.push(data);
-		querySearch(arrayOfParams, callback,output);
-	});
-}
 /**
 Recursively makes an api search call for each ingredient submitted. Needed to deal with asynchronous API calls.
 @method recurse
@@ -126,9 +105,12 @@ function recurse(input, callback, output) {
 	});
 }
 
+/**
+Gets the ingredients, filters the html out and calls recipeSeach.
+@method search
+**/
 function search()
 {
-
     var my_ingredients = document.getElementById('my_ingredients');
     console.log (ingredients);
     ingredients = my_ingredients.innerHTML.replace(/\n|<.*?>/g,'').split(" ").join("+").split("[X]");
@@ -144,9 +126,11 @@ Then it gets the matches and displays them.
 **/
 function recipeSearch(){
 
-    // Show the loading ticker
-    showImage();	
-	
+	//show image
+	showImage();
+
+    var selectBox = document.getElementById('filter');
+    var filter = selectBox.options[selectBox.selectedIndex].value;
     var ingredients_copy = new Array();
     for(var i=0; i<ingredients.length; i++)
     {
@@ -213,23 +197,72 @@ function recipeSearch(){
             }
         }
         updateMatches();
-
+        if(filter=="preptime")
+        {
+            prepSort(correctMatches);
+        }
+        else if(filter=="rating")
+        {
+            rateSort(correctMatches);
+        }
         for(var i=0; i<correctMatches.length; i++)
         {
             var recipeImg = new Image(100,100);
+            var star = new Image(100,16);
+            var starNums = correctMatches[i].rating;
+            if(starNums == 0)
+            {
+                star.src = ("../images/rating_00.jpg");
+            }
+            else if(starNums == 1)
+            {
+                star.src = ("../images/rating_10.jpg");
+            }
+            else if(starNums == 2)
+            {
+                star.src = ("../images/rating_20.jpg");
+            }
+            else if(starNums == 3)
+            {
+                star.src = ("../images/rating_30.jpg");
+            }
+            else if(starNums == 4)
+            {
+                star.src = ("../images/rating_40.jpg");
+            }
+            else if(starNums == 5)
+            {
+                star.src = ("../images/rating_50.jpg");
+            }
+            else
+            {
+                star.src = ("../images/rating_05.jpg");
+            }
             recipeImg.src = correctMatches[i].smallImageUrls[0];
             recipeImg.border = 1;
             var recipeName=document.createTextNode(correctMatches[i].recipeName);
             var recipeId = document.createTextNode(correctMatches[i].id);
- 
-            var ingredientsList = "Ingredients:\n";
+            var prepTime;
+            if(correctMatches[i].totalTimeInSeconds == null)
+                prepTime = document.createTextNode("Not Available");
+            else
+                prepTime = document.createTextNode((correctMatches[i].totalTimeInSeconds/60));
+            //var rating   = document.createTextNode(correctMatches[i].rating);
+            //if(i==0)
+              //  console.log(recipeId);
+            var yummlyUrl= "http://www.yummly.com/recipe/external/";
+            var hrefLink = yummlyUrl.concat(recipeId);
             var link = document.createElement('a');
             link.appendChild(recipeImg);
-            var yummlyUrl = "http://www.yummly.com/recipe/external/" + correctMatches[i].id;
+            yummlyUrl+=String(correctMatches[i].id);
             link.href = yummlyUrl;
             link.target="_blank";
-            var List = document.createTextNode(ingredientsList);
+
+            //link.href()
+            var ingredientsList = "Ingredients:\n";
  
+            var List = document.createTextNode(ingredientsList);
+    
  
             document.getElementById('results_target').appendChild(link);
             document.getElementById('results_target').appendChild(document.createElement('br'));
@@ -241,7 +274,19 @@ function recipeSearch(){
                 document.getElementById('results_target').appendChild(document.createTextNode((j+1) + ". " + correctMatches[i].ingredients[j]));
                 document.getElementById('results_target').appendChild(document.createElement('br'));
             }
+            //document.getElementById('results_target').appendChild(document.createElement('br'));
+            document.getElementById('results_target').appendChild(document.createTextNode("Preparation Time in minutes:"));
             document.getElementById('results_target').appendChild(document.createElement('br'));
+            document.getElementById('results_target').appendChild(prepTime);
+            document.getElementById('results_target').appendChild(document.createElement('br'));
+
+            document.getElementById('results_target').appendChild(document.createTextNode("Rating:"));
+            document.getElementById('results_target').appendChild(document.createElement('br'));
+            document.getElementById('results_target').appendChild(star);
+            document.getElementById('results_target').appendChild(document.createElement('br'));
+            document.getElementById('results_target').appendChild(document.createElement('br'));
+
+
         }
         update();
     });
@@ -285,6 +330,29 @@ Called by update, when the search finishes.
 function hideImage() {
     document.getElementById("Tomato").style.display = 'none';
     document.getElementById("Tomato").style.visibility = 'hidden';
+}
+
+function prepSort(input)
+{
+    input.sort(function(a,b){
+        if(a.totalTimeInSeconds==null)
+        {
+            return (a.totalTimeInSeconds+1000000000)-b.totalTimeInSeconds
+        }
+        else if(b.totalTimeInSeconds == null)
+        {
+            return a.totalTimeInSeconds-(b.totalTimeInSeconds+1000000000)
+        }
+        else 
+        {
+            return a.totalTimeInSeconds-b.totalTimeInSeconds
+        }
+    });
+}
+
+function rateSort(input)
+{
+    input.sort(function(a,b){return b.rating-a.rating});
 }
 
 /*
