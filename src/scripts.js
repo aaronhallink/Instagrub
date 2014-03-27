@@ -274,6 +274,7 @@ Called by recipeSearch when the search begins.
 **/
 function showImage() {
     document.getElementById("Tomato").style.display = 'block';
+    document.getElementById("Tomato").style.visibility = 'visible';
 }
 
 /**
@@ -282,7 +283,7 @@ Called by update, when the search finishes.
 @method hideImage
 **/
 function hideImage() {
-	document.getElementById("Tomato").style.display = 'none';
+    document.getElementById("Tomato").style.display = 'none';
     document.getElementById("Tomato").style.visibility = 'hidden';
 }
 
