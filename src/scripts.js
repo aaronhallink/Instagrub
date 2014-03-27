@@ -84,9 +84,9 @@ function checkIngredient(name){
 Makes the query string, then calls the api object to make a api search. Then gets the matched recipes and displays them.
 @method querySearch
 
-@param {Array} arrayOfParams Array of strings, containing recipe search terms.
+@param {Array} arrayOfParams 
 @param {function} callback The function to be called when this finishes executing.
-@param {} output
+@param {} output Array of A
 
 @return The output of the `callback` function, called with arguments `output`
 **/
@@ -106,9 +106,9 @@ function querySearch(arrayOfParams, callback, output){
 Recursively makes an api search call for each ingredient submitted. Needed to deal with asynchronous API calls.
 @method recurse
 
-@param input {}
+@param input {Array} Array of strings, containing recipe search terms.
 @param callback {function} The function to be called when this function finishes executing.
-@param output {}
+@param output {Array} An array of arrays of query searches, 1 for each ingredient.
 
 @return The output of the `callback` function, called with arguments `output`
 **/
@@ -241,7 +241,8 @@ function update(){
     check = 1;
     
     // Hide the loading ticker
-    hideImage()
+    hideImage();
+	return check;
 }
 
 /**

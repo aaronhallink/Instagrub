@@ -57,8 +57,8 @@ describe("Scripts", function () {
 	
 	describe("when update is called", function() {
 		it("should update check", function() {
-			update();
-			expect(check).toBe(1);
+			expect(update()).toBe(1);
+			// expect(check).toBe(1);
 		});
 	});
 	
@@ -66,6 +66,13 @@ describe("Scripts", function () {
 		it("should update checkMatches", function() {
 			updateMatches();
 			expect(checkMatches).toBe(1);
+		});
+	});
+	
+	describe("when showImage() is called", function() {
+		it("should display a spinning tomato", function() {
+			showImage();
+			expect(document.getElementById("Tomato").style.display).toBe('block')
 		});
 	});
 	
