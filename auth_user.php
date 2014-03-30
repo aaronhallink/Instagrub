@@ -33,6 +33,7 @@
 	if(sha1($password)!=$realpass['password'])
 	{
 		echo "Error! Invalid username or password, please try again.";
+		echo "Redirecting...";
 		//gives delay before redirecting
 		header('refresh:3;url=login.php');
 	}
