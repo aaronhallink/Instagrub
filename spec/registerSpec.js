@@ -28,7 +28,7 @@ describe("Register.php", function() {
 			});
 		});
 		
-		describe("Different passwords", function() {
+		describe("Duplicate email", function() {
 			it("should return an error", function() {
 				expect(validateForm()).toBe(false);
 				expect(document.getElementById('form_error_msg').innerHTML).toBe('<h4 style="font-size:16px;">The following errors occurred while processing your submission. Please make the following corrections to finish your submission.</h4><p>Your email is already in use.</p>');
