@@ -6,8 +6,7 @@
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
-<script src="src/register.js"></script>
-
+<script type="text/javascript" src="build/Instagrub.min.js"></script>
 
 </head>
 <body>
@@ -22,10 +21,19 @@
 	<div id="form_error_msg" style="padding:5px;background-color: #FFBABA; border:1px solid #E53E46;margin-bottom:10px;">
 						
 	</div>
+<?php
+if (isset($_GET['dup'])==1){
+ ?>
+ <div id="form_error_msg" style="padding:5px;background-color: #FFBABA; border:1px solid #E53E46;margin-bottom:10px;">
+      <h3>Email already in use</h3>
+ </div>
+<?php
+ } 
 
+ ?>
 	<form name="register" action="add_new_user.php" onsubmit="return validateForm()" method="post" id="reg_form">
 	    Name: <br/><input type="text" name="name" maxlength="30" id="query"/><br/>
-	    YourEmail: <br/><input type="text" name="email" maxlength="30" id="query"/><br />
+	    YourEmail: <br/><input type="text" name="email" maxlength="30" id="query"/><br/>
 	    Password: <br/><input type="password" name="pass1" id="query"/> <br />
 	    Password Again: <br/><input type="password" name="pass2" id="query"/> <br/>
 	    

@@ -8,8 +8,8 @@ describe("Scripts", function () {
 	var addImgSrc;
 	var searchImgSrc;
 	
-	it('should have no children', function() {
-		console.log(results.firstChild);
+	it('should have one child', function() {
+		expect(results.firstChild).toBe(results.lastChild);
 	});
 	
 	beforeEach(function() {
@@ -20,19 +20,29 @@ describe("Scripts", function () {
 		searchButton = document.getElementById('searchImage');
 		addImgSrc = addButton.src;
 		searchImgSrc = searchButton.src;
+		spy = {
+			'f' : function() {
+				return 0;
+			}
+		};
+		spyOn(spy, 'f');
 	});
 	
 	describe("when a new ingredient is submitted", function() {
 		it("should update the text area", function() {
+			var prev = textArea.innerHTML;
 			query.value = "corn";
 			addButton.click();
-			expect(textArea.innerHTML).toBe(output);
+			expect(textArea.innerHTML).not.toBe(prev);
+			prev = textArea.innerHTML;
+			expect(prev).toBe(textArea.innerHTML);
 			query.value = "peas";
 			addButton.click();
-			expect(textArea.innerHTML).toBe(output);
+			expect(textArea.innerHTML).not.toBe(prev);
+			prev = textArea.innerHTML;
 			query.value = "chicken";
 			addButton.click();
-			expect(textArea.innerHTML).toBe(output);
+			expect(textArea.innerHTML).not.toBe(prev);
 		});
 	});
 	
@@ -48,6 +58,23 @@ describe("Scripts", function () {
 		});
 	});
 	
+	describe("when an ingredient is removed", function() {
+		it("should update the text area", function() {
+			var prev = textArea.innerHTML;
+			removeIngredient(0);
+			expect(textArea.innerHTML).not.toBe(prev);
+			prev = textArea.innerHTML;
+			expect(prev).toBe(textArea.innerHTML);
+			removeIngredient(1);
+			expect(textArea.innerHTML).not.toBe(prev);
+			prev = textArea.innerHTML;
+			removeIngredient(0);
+			expect(textArea.innerHTML).not.toBe(prev);
+		});
+	});
+	
+
+	
 	describe("when search button is clicked", function() {
 		
 		it("should post results", function() {
@@ -57,8 +84,9 @@ describe("Scripts", function () {
 	
 	describe("when update is called", function() {
 		it("should update check", function() {
-			expect(update()).toBe(1);
-			// expect(check).toBe(1);
+			expect(check).toBe(0);
+			// expect(update()).toBe(1);
+			
 		});
 	});
 	
@@ -72,7 +100,22 @@ describe("Scripts", function () {
 	describe("when showImage() is called", function() {
 		it("should display a spinning tomato", function() {
 			showImage();
-			expect(document.getElementById("Tomato").style.display).toBe('block')
+			expect(document.getElementById("Tomato").style.display).toBe('block');
+		});
+	});
+	
+	describe("when hideImage() is called", function() {
+		it("should hide the spinning tomato", function() {
+			hideImage();
+			expect(document.getElementById("Tomato").style.display).toBe('none');
+			expect(document.getElementById("Tomato").style.visibility).toBe('hidden');
+		});
+	});
+	
+	describe("recurse", function() {
+		it("should call the function passed to its callback argument", function() {
+			recurse([], spy.f, []);
+			expect(spy.f).toHaveBeenCalled();
 		});
 	});
 	

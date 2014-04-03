@@ -162,7 +162,7 @@
         },
         {
             "file": "src\\scripts.js",
-            "line": 17,
+            "line": 18,
             "description": "Displays the ingredients that the user added to the text area.",
             "itemtype": "method",
             "name": "displayIngredients",
@@ -171,7 +171,23 @@
         },
         {
             "file": "src\\scripts.js",
-            "line": 43,
+            "line": 45,
+            "description": "Removes the ingredient when the X is clicked in the text area",
+            "itemtype": "method",
+            "name": "removeIngredient",
+            "params": [
+                {
+                    "name": "ing_id",
+                    "description": "The place of the ingredient in the list, starting from 0.",
+                    "type": "Int"
+                }
+            ],
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "src\\scripts.js",
+            "line": 68,
             "description": "Checks whether or not the given ingredient was already inputted.",
             "itemtype": "method",
             "name": "checkIngredient",
@@ -191,42 +207,15 @@
         },
         {
             "file": "src\\scripts.js",
-            "line": 60,
-            "description": "Makes the query string, then calls the api object to make a api search. Then gets the matched recipes and displays them.",
-            "itemtype": "method",
-            "name": "querySearch",
-            "params": [
-                {
-                    "name": "arrayOfParams",
-                    "description": "Array of strings, containing recipe search terms.",
-                    "type": "Array"
-                },
-                {
-                    "name": "callback",
-                    "description": "The function to be called when this finishes executing.",
-                    "type": "Function"
-                },
-                {
-                    "name": "output",
-                    "description": ""
-                }
-            ],
-            "return": {
-                "description": "The output of the `callback` function, called with arguments `output`"
-            },
-            "class": "scripts",
-            "module": "scripts"
-        },
-        {
-            "file": "src\\scripts.js",
-            "line": 82,
+            "line": 84,
             "description": "Recursively makes an api search call for each ingredient submitted. Needed to deal with asynchronous API calls.",
             "itemtype": "method",
             "name": "recurse",
             "params": [
                 {
                     "name": "input",
-                    "description": ""
+                    "description": "Array of strings, containing recipe search terms.",
+                    "type": "Array"
                 },
                 {
                     "name": "callback",
@@ -235,7 +224,8 @@
                 },
                 {
                     "name": "output",
-                    "description": ""
+                    "description": "An array of arrays of query searches, 1 for each ingredient.",
+                    "type": "Array"
                 }
             ],
             "return": {
@@ -246,7 +236,16 @@
         },
         {
             "file": "src\\scripts.js",
-            "line": 106,
+            "line": 108,
+            "description": "Gets the ingredients, filters the html out and calls recipeSeach.",
+            "itemtype": "method",
+            "name": "search",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "src\\scripts.js",
+            "line": 121,
             "description": "This function makes the query string, then calls the api object to make a api search\nThen it gets the matches and displays them.",
             "itemtype": "method",
             "name": "recipeSearch",
@@ -255,7 +254,7 @@
         },
         {
             "file": "src\\scripts.js",
-            "line": 209,
+            "line": 295,
             "description": "Resets check variable to 1.",
             "itemtype": "method",
             "name": "update",
@@ -264,10 +263,28 @@
         },
         {
             "file": "src\\scripts.js",
-            "line": 217,
+            "line": 307,
             "description": "Resets checkMatches variable to 1.",
             "itemtype": "method",
             "name": "updateMatches",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "src\\scripts.js",
+            "line": 315,
+            "description": "Displays the spinning tomato gif.\nCalled by recipeSearch when the search begins.",
+            "itemtype": "method",
+            "name": "showImage",
+            "class": "scripts",
+            "module": "scripts"
+        },
+        {
+            "file": "src\\scripts.js",
+            "line": 325,
+            "description": "Hides the spinning tomato gif.\nCalled by update, when the search finishes.",
+            "itemtype": "method",
+            "name": "hideImage",
             "class": "scripts",
             "module": "scripts"
         }
