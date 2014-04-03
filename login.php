@@ -9,7 +9,7 @@
 </head>
 <body>
 
-		<div id="header"><h1 style="color:white;margin-top:-5px;float:left;">Instagrub</h1><div id="login" style="float:right;">
+		<div id="header"><h1 style="color:white;margin-top:-5px;float:left;"><a href="index.php" style="color:white;text-decoration:none;">Instagrub</a></h1><div id="login" style="float:right;">
 			<a href="register.php">Don't have an account?<br/> Sign up!</a>
 		</div></div>
 		<div id="wrap">

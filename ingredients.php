@@ -20,7 +20,7 @@
 	session_start();
 	require('config.php');
 ?>
-<div id="header"><h1 style="color:white;margin-top:-5px;float:left;">Instagrub</h1>
+<div id="header"><h1 style="color:white;margin-top:-5px;float:left;"><a href="index.php" style="color:white;text-decoration:none;">Instagrub</a></h1>
 	<div style="float:right;">
 		<?php
 		if (isset($_SESSION['valid_user']))

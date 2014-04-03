@@ -12,7 +12,7 @@
 <body>
 
 		
-	<div id="header"><h1 style="color:white;margin-top:-5px;float:left;">Instagrub</h1><div id="login" style="float:right;"><a href="login.php">Login</a> or <a href="register.php">Sign up</a>
+	<div id="header"><h1 style="color:white;margin-top:-5px;float:left;"><a href="index.php" style="color:white;text-decoration:none;">Instagrub</a></h1><div id="login" style="float:right;"><a href="login.php">Login</a> or <a href="register.php">Sign up</a>
 		</div></div>
 <br/><div id="wrap">
 	<div id="wrapper">
