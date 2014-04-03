@@ -5,6 +5,13 @@
 <link rel='stylesheet' type='text/css' href='css/style.css' />
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<<<<<<< HEAD
+=======
+	<!--
+	<script type="text/javascript" src="src/api.js"></script>
+	<script type="text/javascript" src="src/scripts.js"></script>
+	-->
+>>>>>>> 93e418fe5e258408bd3b321f28fc6e05b58530dd
 	
 	<script type="text/javascript" src="build/Instagrub.min.js"></script>
 
@@ -94,6 +101,10 @@ if (isset($_GET['added'])){
 
 <script>
 	document.getElementById("Tomato").style.display = 'none';
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 93e418fe5e258408bd3b321f28fc6e05b58530dd
 </script>
 </body>
 </html>
