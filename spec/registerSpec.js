@@ -28,7 +28,6 @@ describe("Register.php", function() {
 			});
 		});
 		
-<<<<<<< HEAD
 		describe("Two empty fields", function() {
 			it("should return an error", function() {
 				document.forms["reg_form"]["name"].value = '';
@@ -48,15 +47,6 @@ describe("Register.php", function() {
 			});
 		});
 		
-=======
-		describe("Duplicate email", function() {
-			it("should return an error", function() {
-				expect(validateForm()).toBe(false);
-				expect(document.getElementById('form_error_msg').innerHTML).toBe('<h4 style="font-size:16px;">The following errors occurred while processing your submission. Please make the following corrections to finish your submission.</h4><p>Your email is already in use.</p>');
-			})
-		});
-		
->>>>>>> 93e418fe5e258408bd3b321f28fc6e05b58530dd
 		describe("No name entered", function() {
 			it("should return an error", function() {
 				document.forms["reg_form"]["name"].value = '';

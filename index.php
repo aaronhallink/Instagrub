@@ -14,13 +14,6 @@
 
 
 	<script type="text/javascript" src="build/Instagrub.min.js"></script>
-<<<<<<< HEAD
-=======
-	<!--
-	<script type="text/javascript" src="src/api.js"></script>
-	<script type="text/javascript" src="src/scripts.js"></script>
-	-->
->>>>>>> 93e418fe5e258408bd3b321f28fc6e05b58530dd
 
 </head>
 <body>

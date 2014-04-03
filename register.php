@@ -7,12 +7,6 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400' rel='stylesheet' type='text/css'>
 	<title>Instagrub</title>
 <script type="text/javascript" src="build/Instagrub.min.js"></script>
-<<<<<<< HEAD
-=======
-<!--
-<script src="src/register.js"></script>
--->
->>>>>>> 93e418fe5e258408bd3b321f28fc6e05b58530dd
 
 </head>
 <body>

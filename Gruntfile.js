@@ -48,7 +48,7 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['yuidoc', 'jasmine', 'uglify']);
   grunt.registerTask('test', ['jasmine']);
-  grunt.registerTask('docs', ['clean', 'yuidoc']);
-  grunt.registerTask('build', ['clean', 'uglify']);
+  grunt.registerTask('docs', ['yuidoc']);
+  grunt.registerTask('build', ['uglify']);
 
 };
